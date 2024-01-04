@@ -9,7 +9,7 @@ if (isset($_SESSION['adminID']) && isset($_SESSION['adminPassword'])) { ?>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css files/admin-header3.css">
+        <link rel="stylesheet" href="../css files/admin-header4.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/979ee355d9.js" crossorigin="anonymous"></script>
         <title>Capstone Archive</title>
@@ -75,7 +75,7 @@ if (isset($_SESSION['adminID']) && isset($_SESSION['adminPassword'])) { ?>
                 <button type="submit" class="btn btn" id="cancelbtn" name="cancel">Cancel</button>
 
             </form>
-</div>
+        </div>
         <?php } ?>
     </body>
     </html>

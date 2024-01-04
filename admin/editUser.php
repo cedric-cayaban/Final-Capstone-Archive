@@ -9,7 +9,7 @@ if (isset($_SESSION['adminID']) && isset($_SESSION['adminPassword'])) { ?>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css files/admin-header3.css">
+        <link rel="stylesheet" href="../css files/admin-header4.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/979ee355d9.js" crossorigin="anonymous"></script>
         <title>Capstone Archive</title>
@@ -45,20 +45,34 @@ if (isset($_SESSION['adminID']) && isset($_SESSION['adminPassword'])) { ?>
         $result = mysqli_query($connect, $query);
         while ($row = mysqli_fetch_assoc($result)) {
         ?>
-        <div class="container-fluid">
-            <form action="" method="post">
-                    <input type="text" name="userID" id="" value="<?php echo $editUser?>" required readonly>
-                    <input type="text" name="password" id="" value="<?php echo $row['password'] ?>" required>
-                    <input type="text" name="lastName" id="" value="<?php echo $row['lastName'] ?>" required>
-                    <input type="text" name="firstName" id="" value="<?php echo $row['firstName'] ?>" required>
-                    <input type="text" name="middleName" id="" value="<?php echo $row['middleName'] ?>" required>
+        <div class="container-fluid col-md-6" id="cont">
+            <form action="" class=""method="post">
 
-                    <select name="program" id=""> <!-- program -->
+                <div class="form-group mb-2">
+                
+                    <label for="professorID"><b>User ID</b></label>
+                    <input type="text" class="form-control" name="userID" id="" value="<?php echo $editUser?>" required readonly>
+
+                    <label for="professorID"><b>Password</b></label>
+                    <input type="text" class="form-control" name="password" id="" value="<?php echo $row['password'] ?>" required>
+
+                    <label for="professorID"><b>Last Name</b></label>
+                    <input type="text" class="form-control" name="lastName" id="" value="<?php echo $row['lastName'] ?>" required>
+
+                    <label for="professorID"><b>First Name</b></label>
+                    <input type="text" class="form-control" name="firstName" id="" value="<?php echo $row['firstName'] ?>" required>
+
+                    <label for="professorID"><b>Middle Name</b></label>
+                    <input type="text" class="form-control" name="middleName" id="" value="<?php echo $row['middleName'] ?>" required>
+
+                    <label for="professorID"><b>Program</b></label>
+                    <select name="program"  class="form-select"id=""> <!-- program -->
                         <option value="Bachelor of Science in Information Technology">Bachelor of Science in Information Technology</option>
                         <option value="Software Engineering">Software Engineering</option>
                     </select>
 
-                    <select name="major" id=""> <!-- major -->
+                    <label for="professorID"><b>Major</b></label>
+                    <select name="major" class="form-select" id=""> <!-- major -->
                         <?php
                         include('../config.php');
                         $program = mysqli_query($connect, "SELECT * FROM major");
@@ -67,10 +81,20 @@ if (isset($_SESSION['adminID']) && isset($_SESSION['adminPassword'])) { ?>
                             <option value="<?php echo $q['majorID'] ?>"><?php echo $q['majorName'] ?></option>
                         <?php }?>
                     </select>
+                    
                     <button type="submit" class="btn btn-primary" name="save">Save</button>
-                    <button type="submit" class="btn btn-secondary" name="cancel">Cancel</button>
-                </form>
-        </div>
+                     <button type="submit" class="btn btn-secondary" name="cancel">Cancel</button>
+
+                </div>
+
+               
+
+
+                    
+                </form> 
+           
+            </div>
+           
             
         <?php } ?>
     </body>
