@@ -1,0 +1,519 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+#sys-name{
+    margin-top: 10px;
+    font-size: 1.48rem;
+    font-family: "Poppins", sans-serif;
+}
+
+.system-name button{
+    border-radius: 50px; 
+    border: none;
+}
+
+
+.system-name{
+    margin-right: 100px;
+    font-size: 1.48rem;
+    font-family: "Poppins", sans-serif;
+
+}
+
+.system-name label{
+    margin-right: 10px;
+    font-size: 1.48rem;
+    font-family: "Poppins", sans-serif;
+}
+
+
+
+
+/* Style the top section */
+.top-section {
+    display: flex;
+    align-items: center;
+    padding: 10px 70px;
+    background-color: white;
+    
+}
+
+
+/* Style the logo */
+.logo {
+    max-width: 100px; /* Adjust the max-width as needed */
+    margin-right: 10px; /* Add spacing between the logo and text */
+}
+
+/* Style the university name */
+
+.top-section label{
+    opacity: 0.8;
+    color: black;
+    font-size: 1.44rem;
+   
+}
+.university-name {
+    font-size: 1.44rem;
+    color: black;
+}
+
+
+
+.system-name button:hover{
+   cursor: pointer;
+}
+
+
+
+
+.navi{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-left: 8%;
+    padding-right: 8%;
+    align-items: center;
+    background-color: #1935DA;
+    
+}
+
+#selected{
+    background-color: #fff;
+    color: black;
+}
+.navi ul{
+    display: flex;
+    list-style: none;
+    
+}
+
+.navbar{
+    background-color: #1935DA;
+}
+
+.nav-item{
+   margin-left: 9px;
+}
+
+.nav-item a{
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.navi ul li a{
+    text-decoration: none;
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 15px;
+    padding-bottom: 16px;
+    transition: all .5s ease;
+}
+.navi ul li a:hover{
+    background-color: white;
+    color: black;
+    box-shadow: 0px 0px 10px white;
+}
+
+#cont{
+    padding-left: 17.5%;
+    
+    padding-top: 3%;
+}
+
+#title{
+   
+}
+
+#date{
+
+}
+
+#abstract{
+    
+}
+
+
+.col{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#cTitle{
+    max-width: 90%;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    border: #1935DA solid 2px;
+    outline: #1935DA;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+#cAbstract{
+    max-width: 90%;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    border: #1935DA solid 2px;
+    outline: #1935DA;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+#cDate{
+    max-width: 50%;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    border: #1935DA solid 2px;
+    outline: #1935DA;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+#capstoneFile{
+    max-width: 50%;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    border: #1935DA solid 2px;
+    outline: #1935DA;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+#multiple{
+    
+}
+
+#right-nav{
+    padding-right: 5%;
+}
+
+#left-nav{
+    padding-left: 5%;
+
+}
+
+#navi{
+    display: flex;
+    justify-content: space-between;
+}
+
+.fields form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 5%;
+}
+
+.input1{ 
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+   margin-left: 7%;
+    
+}
+
+.input1 label{ 
+   margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.input1 input{ 
+    margin-bottom: 40px;
+    height: 40px;
+    border: #1935DA solid 2px;
+    outline: #1935DA;
+    border-radius: 5px;
+    padding: 5px 15px;
+ }
+
+ .input1 textarea{ 
+    margin-bottom: 10px;
+    border: #1935DA solid 2px;
+    outline: #1935DA;
+    border-radius: 5px;
+    padding: 10px 15px;
+ }
+
+
+ .input1 input :hover{ 
+   cursor: pointer;
+ }
+
+ .input1 textarea:hover{ 
+    cursor: pointer;
+ }
+
+.input2{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    margin-right: 180px;
+}
+
+#program-label{
+    margin-top: 25px;
+    
+}
+
+.input2 label{ 
+    margin-bottom: 10px;
+    font-weight: bold;
+   
+ }
+
+.input2 input{ 
+    opacity: 0.9;
+    margin-bottom: 40px;
+    height: 40px;
+    border: #1935DA solid 2px;
+    outline: #1935DA;
+    border-radius: 5px;
+    padding: 8px 15px;
+ }
+
+ #program{ 
+    max-width: 50%;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    border: #1935DA solid 2px;
+    outline: #1935DA;
+    border-radius: 5px;
+    padding: 10px 15px;
+ }
+
+ 
+
+ #submitFile{
+    margin-top: 80px;
+    margin-left: 35%;
+    border: solid #1935DA 1px;
+    border-radius: 5px;
+    background-color: #1935DA;
+    color: #fff;
+    height: 50px;
+    width: 170px;
+    font-weight: bold;
+    font-size: 1rem;
+ }
+
+ .input2 input:hover{ 
+   cursor: pointer;
+ }
+
+ #program:hover{ 
+    cursor: pointer;
+ }
+
+ 
+
+ #submitFile:hover{
+   cursor: pointer;
+ }
+
+ #submitFile:hover{
+    cursor: pointer;
+ }
+
+
+
+
+@media only screen and (max-width: 1268px) {
+
+    
+    .side-bar input{
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+
+    #date-search{
+        margin-left: 8px;
+    }
+
+    #end{
+        margin-left: 10px;
+        color: #1935DA;
+    }
+
+    .search-bar {
+        flex-direction: column;
+        max-width: none;
+        margin-right: 380px;
+        width: 700px;
+    }
+
+    .search-bar input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .search-bar button i{
+        width: 100%;
+        margin-left: 430px;
+        color: #fff;
+    }    
+
+    #date-search,   
+    .side-bar .range,
+    .search-bar {
+        
+        flex-direction: column;
+    }
+}
+
+
+@media only screen and (max-width: 968px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .top-section {
+        flex-direction: column;
+        padding: 10px;
+        max-width: none;
+    }
+
+    .logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .system-name {
+        margin-right: 0;
+        font-size: 1.2rem;
+    }
+
+    .navi {
+        flex-direction: column;
+        text-align: center;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .navi ul {
+        flex-direction: column;
+    }
+
+    .navi ul li {
+        padding: 10px 0;
+        font-size: 1rem;
+    }
+
+    .navi ul li a {
+        padding: 10px 15px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+        max-width: none;
+        margin-right: 150px;
+        width: 600px;
+    }
+
+    .search-bar input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .search-bar button i{
+        width: 100%;
+        margin-left: 430px;
+        color: #fff;
+    }
+
+    .side-bar {
+        flex-direction: column;
+        
+    }
+
+    #date-search,   
+    .side-bar .range,
+    .search-bar {
+        
+        flex-direction: column;
+    }
+
+    .search-bar {
+        max-width: 400px;
+    }
+    .navs {
+        width: 11%;
+       
+      }
+       
+       
+      .logout {
+        font-size: 15px;
+       
+          position: relative;
+          font-weight:600 ;
+        right: -18px;
+        bottom: -6px;
+        overflow: hidden;
+        letter-spacing: 3px;
+        opacity: 0;
+        transition: opacity .45s;
+        -webkit-transition: opacity .35s;
+        color: black;
+      }
+
+      #logout{
+        padding: 10px 20px;
+        /* background-color: red; */
+        color: #fff;
+        border: 0;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+    
+    #logout:hover{
+       cursor: pointer;
+    }    
+       
+      .buttons {
+          text-decoration: none;
+          float: right;
+        padding: 20px;
+        margin: 15px;
+        color: white;
+        width: 80px;
+       
+        transition: width .35s;
+        -webkit-transition: width .35s;
+        overflow: hidden
+      }
+       
+      a:hover {
+        width: 80%;
+      }
+       
+      a:hover .logout{
+        opacity: .9;
+      }
+       
+      a {
+        text-decoration: none;
+      }
+}
+
+@media(max-width: 757px){
+   
+}
+
+

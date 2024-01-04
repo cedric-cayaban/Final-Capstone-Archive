@@ -1,0 +1,30 @@
+#top{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 5%;
+    padding-right: 10%;
+}
+
+#top a{
+    background-color: #1935DA;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 15px;
+    margin-top: 5%;
+    text-decoration: none;
+    
+}
+
+.col{
+   
+}
+
+#inputs{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+   
+}
