@@ -11,7 +11,7 @@
 <?php
 if (isset($_POST['logout'])) {
     session_destroy();
-    header("Refresh: 1; url='../login/manager-login.php'");
+    header("Refresh: 1; url='../login/login.php'");
     echo "<script>alert('Logged out successfully.')</script>";
 }
 ?>

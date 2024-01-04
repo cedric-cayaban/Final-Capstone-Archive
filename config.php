@@ -2,7 +2,5 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "ca";
+$database = "capstone_archive02";
 $connect = new mysqli($host, $username, $password, $database);
-
-?>
