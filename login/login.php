@@ -19,7 +19,7 @@
             <label for="">STUDENT LOGIN</label>
         </div>
 
-        <form action="student-login.php" method="post" class="field-input">
+        <form action="login.php" method="post" class="field-input">
             <label for="">ID Number</label>
             <input type="text" name="idNumber" placeholder="21-UR-0183">
             <label for="">Password</label>
@@ -38,7 +38,7 @@
 
                     if (mysqli_num_rows($result) >= 1) {
                         $row = mysqli_fetch_assoc($result);
-                        if ($row['userID'] == $idNumber && $row['password'] == $password) { 
+                        if ($row['userID'] == $idNumber && $row['password'] == $password) {
                             // echo "<script>alert('Logged in successfully!')</script>";
                             $_SESSION['userID'] = $row['userID'];
                             $_SESSION['password'] = $row['password'];
@@ -47,9 +47,7 @@
                         } else {
                             echo "<p style='color: red;'>Invalid credentials.</p>";
                         }
-                    } 
-                    else if (!empty($idNumber) && !empty($password))
-                    {
+                    } else if (!empty($idNumber) && !empty($password)) {
 
                         $sql = "SELECT `professorID`, `password` FROM professor WHERE professor.professorID = '$idNumber' AND professor.password = '$password'";
                         $result = mysqli_query($connect, $sql);
@@ -65,30 +63,28 @@
                             } else {
                                 echo "<p style='color: red;'>Invalid credentials.</p>";
                             }
-                        } else {
-                            echo "<p style='color: red;'>Invalid credentials.</p>";
-                        }
-                    } else if (!empty($idNumber) && !empty($password))
-                    {
-                        $sql = "SELECT `adminID`, `password` FROM `admin` WHERE admin.adminID = '$idNumber' AND admin.password = '$password'";
-                        $result = mysqli_query($connect, $sql);
+                        } else if (!empty($idNumber) && !empty($password)) {
+                            $sql = "SELECT `adminID`, `password` FROM `admin` WHERE admin.adminID = '$idNumber' AND admin.password = '$password'";
+                            $result = mysqli_query($connect, $sql);
 
-                        if (mysqli_num_rows($result) >= 1) {
-                            $row = mysqli_fetch_assoc($result);
-                            if ($row['adminID'] == $idNumber && $row['password'] == $password) {
-                                // echo "<script>alert('Logged in successfully!')</script>";
-                                $_SESSION['adminID'] = $row['adminID'];
-                                $_SESSION['adminPassword'] = $row['password'];
-                                echo "<p style='color: green;'>Logged in.</p>";
-                                header("Refresh: 1; url='../admin/admin_home.php'");
+                            if (mysqli_num_rows($result) >= 1) {
+                                $row = mysqli_fetch_assoc($result);
+                                if ($row['adminID'] == $idNumber && $row['password'] == $password) {
+                                    // echo "<script>alert('Logged in successfully!')</script>";
+                                    $_SESSION['adminID'] = $row['adminID'];
+                                    $_SESSION['adminPassword'] = $row['password'];
+                                    echo "<p style='color: green;'>Logged in.</p>";
+                                    header("Refresh: 1; url='../admin/admin_home.php'");
+                                } else {
+                                    echo "<p style='color: red;'>Invalid credentials.</p>";
+                                }
                             } else {
                                 echo "<p style='color: red;'>Invalid credentials.</p>";
                             }
                         } else {
                             echo "<p style='color: red;'>Invalid credentials.</p>";
                         }
-                    }
-                    else {
+                    } else {
                         echo "<p style='color: red;'>Invalid credentials.</p>";
                     }
                 } else {
@@ -99,14 +95,12 @@
             }
             ?>
             <div class="buttons">
-                 <input type="submit" name="btnLogin" value="LOGIN" id="login">
+                <input type="submit" name="btnLogin" value="LOGIN" id="login">
             </div>
-           
+
         </form>
-            <a href="register.php">Register</a>
-            <a href="login-type.php">Back to Login Type</a>
+        <a href="register.php">Register</a>
     </div>
 </body>
 
 </html>
-
