@@ -157,6 +157,11 @@ header {
     border: solid #1935DA 2px;
 }
 
+.form-group select{
+    margin-bottom: 2%;
+    border: solid #1935DA 2px;
+}
+
 #savebtn{
     background-color: #1935DA;
     color: #fff;
