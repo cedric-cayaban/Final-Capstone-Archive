@@ -17,103 +17,96 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
 
     <body>
         <?php include "../headers/prof_header_home.php"; ?>
-        <?php 
-            $sql = "SELECT * FROM block WHERE blockID = '$blockID'";
-            $result = mysqli_query($connect, $sql);
-            while($row = mysqli_fetch_array($result)){ ?>
-                <h2>BSIT <?php echo $row['blockName'];?></h2>
-                <h3><?php echo $row['semester'];?></h3>
-                <h5><?php echo $row['year'];?> - <?php echo $row['year'] + 1;?></h5>
-            <?php } ?>
-            
-            <form action="">
-                <div class="row">
-                    <div class="col-md" id="delete-sec">
-                        <button type="submit" class="btn btn-danger" id="delete" name="deleteClassbtn">Delete Class</button>  
-                    </div>
-                </div>
-            </form>
-            <div class="container-fluid" id="contents">
-                <form action="" method="post"> 
-                   
-                    
-                    <div class="row">
 
+        <form action="">
+            <div class="row">
+                <div class="col-md" id="delete-sec">
+                    <button type="submit" class="btn btn-danger" id="delete" name="deleteClassbtn">Delete Class</button>
+                </div>
+            </div>
+        </form>
+        <div class="container-fluid" id="contents">
+            <form action="" method="post">
+
+                <?php
+                $sql = "SELECT * FROM block WHERE blockID = '$blockID'";
+                $result = mysqli_query($connect, $sql);
+                while ($row = mysqli_fetch_array($result)) { ?>
+                    <div class="row">
                         <div class="col-md-8" id="id-sec">
                             <label for=""><b>ID Number</b></label>
-                            <input type="text" name="studentID" id="stud-id"required>
+                            <input type="text" name="studentID" id="stud-id" required>
                         </div>
 
                         <div class="col-md" id="block-sec">
-                            <label for=""><b>BLOCK NAME</b></label>
+                            <label for=""><b>BSIT <?php echo $row['blockName']; ?></b></label>
                         </div>
 
                         <div class="col-md" id="sem-sec">
-                            <label for="" id="sem"><b>SEMESTER NAME</b></label>
-                            <label for="" id="year">YEAR</label>
+                            <label for="" id="sem"><b><?php echo $row['semester']; ?></b></label>
+                            <label for="" id="year"><?php echo $row['year']; ?></label>
                         </div>
+                    </div>
+                <?php } ?>
 
-                       
 
+                <div class="row" id="row2">
+
+                    <div class="col" id="lName-sec">
+                        <label for=""><b>Last Name</b></label>
+                        <input type="text" name="lastName" id="lName" required>
                     </div>
 
-                    <div class="row" id="row2">
+                    <div class="col" id="fname-sec">
+                        <label for=""><b>First Name</b></label>
+                        <input type="text" name="firstName" id="fName" required>
+                    </div>
 
-                        <div class="col" id="lName-sec">
-                            <label for=""><b>Last Name</b></label>
-                            <input type="text" name="lastName" id="lName" required>
-                        </div>
+                    <div class="col" id="mName-sec">
+                        <label for=""><b>Middle Name</b></label>
+                        <input type="text" name="middleName" id="mName" required>
+                    </div>
 
-                        <div class="col" id="fname-sec">
-                            <label for=""><b>First Name</b></label>
-                             <input type="text" name="firstName" id="fName" required>
-                        </div>
+                    <div class="col-md-2" id="add-sec">
+                        <button type="submit" class="btn btn-primary" id="add" name="addMemberbtn">Add Member</button>
+                    </div>
 
-                        <div class="col" id="mName-sec">
-                            <label for=""><b>Middle Name</b></label>
-                            <input type="text" name="middleName" id="mName" required>
-                        </div>
+                </div>
+            </form>
 
-                        <div class="col-md-2" id="add-sec">
-                            <button type="submit" class="btn btn-primary" id="add" name="addMemberbtn">Add Member</button> 
-                        </div>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <th scope="col">ID Number</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Middle Name</th>
+                    <th scope="col">Action</th>
+                </thead>
+                <tbody>
+                    <?php
+                    $query = "SELECT * FROM students WHERE blockID = '$blockID'";
+                    $result = mysqli_query($connect, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+                    ?>
+                        <tr>
+                            <td><?php echo $row['studentID']; ?></td>
+                            <td><?php echo $row['lastName']; ?></td>
+                            <td><?php echo $row['firstName']; ?></td>
+                            <td><?php echo $row['middleName']; ?></td>
+                            <td>
+                                <form action="" method="post">
+                                    <input type="hidden" name="studentID" value="<?php echo $row['studentID']; ?>">
+                                    <div class="btn-group" role="group">
+                                        <button type='submit' name="removebtn" value="remove" class='btn btn-danger btn-sm'>Remove</button>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
 
-                    </div>         
-                </form>
-
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-                <th scope="col">ID Number</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Middle Name</th>
-                <th scope="col">Action</th>
-            </thead>
-            <tbody>
-                <?php
-                $query = "SELECT * FROM students WHERE blockID = '$blockID'";
-                $result = mysqli_query($connect, $query);
-                while ($row = mysqli_fetch_array($result)) {
-                ?>
-                <tr>
-                    <td><?php echo $row['studentID']; ?></td>
-                    <td><?php echo $row['lastName']; ?></td>
-                    <td><?php echo $row['firstName']; ?></td>
-                    <td><?php echo $row['middleName']; ?></td>
-                    <td>
-                        <form action="" method="post">
-                            <input type="hidden" name="studentID" value="<?php echo $row['studentID']; ?>">
-                            <div class="btn-group" role="group">
-                                <button type='submit' name="removebtn" value="remove" class='btn btn-danger btn-sm'>Remove</button>
-                            </div>
-                        </form>
-                    </td>
-                </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-            </div>
-        
     </body>
 
     </html>
@@ -161,7 +154,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
     ?>
 
     <!-- display all students that belong in this class -->
-    
+
 <?php
 } else {
     session_destroy();

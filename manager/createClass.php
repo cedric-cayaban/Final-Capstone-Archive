@@ -31,14 +31,15 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                     <div class="col" id="semester">
                         <label for=""><b>Class Semester</b></label>
                         <select name="semester" id="sem">
-                            <option value="">1st Semester</option>
+                            <option value="1st Semester">1st Semester</option>
+                            <option value="2nd Semester">2nd Semester</option>
                         </select>
                     </div>
 
                     <div class="col" id="year">
                         <label for=""><b>Year</b></label>
                         <select name="year" id="yr">
-                        <?php
+                            <?php
                             $today = new DateTime("now", new DateTimeZone('Asia/Manila'));
                             $dateTime = $today->format('Y');
                             $selectedYear = isset($_GET['start']) ? $_GET['start'] : 'start';
@@ -46,7 +47,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                                 $selected = ($year == $selectedYear) ? 'selected' : '';
                                 echo "<option value=\"$year\" $selected>$year</option>";
                             }
-                        ?>
+                            ?>
                         </select>
                     </div>
                 </div>
@@ -64,12 +65,12 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
         $semester = $_POST['semester'];
         $year = $_POST['year'];
         $professorID = $_SESSION['professorID'];
-        
+
 
         $sql = "INSERT INTO `block`(`blockName`, `professorID`, `semester`, `year`) VALUES ('$className','$professorID','$semester','$year')";
         $result = mysqli_query($connect, $sql);
         echo '<script>alert("Block has been created successfully!")</script>';
-        header("Refresh: 1; url='professor_home.php'");
+        header("Refresh: 1; url='addStudents.php'");
     }
     ?>
 

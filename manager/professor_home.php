@@ -15,24 +15,11 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
     </head>
 
     <body>
-        <?php include "../headers/prof_header_home.php";?>
+        <?php include "../headers/prof_header_home.php"; ?>
 
-    <!-- CODE MO IDOL  -->
+        <!-- CODE MO IDOL  -->
 
-        <!-- <a href="createClass.php">Create Class</a>
-
-        <?php 
-            $sql = "SELECT * FROM `block` WHERE `professorID` = '".$_SESSION['professorID']."'";
-            $result = mysqli_query($connect, $sql);
-
-            while($row = mysqli_fetch_array($result)){ ?> 
-               <br><a href=""><?php echo $row['blockName']?></a>
-            <?php }
-        ?> -->
-
-     <!-- CODE MO IDOL  -->
-     
-        <!-- CODE KO -->
+        <!-- <a href="createClass.php">Create Class</a> -->
         <div class="container-fluid">
 
             <div class="row mt-5" id="top">
@@ -41,40 +28,31 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                 </div>
                 <div class="col" id="create-section">
                     <a href="createClass.php" id="create">
-                    <i class="fa-solid fa-user-plus fa-lg"></i>
+                        <i class="fa-solid fa-user-plus fa-lg"></i>
                         Create Class
                     </a>
                 </div>
             </div>
-                <!-- ETO OUTPUT PAG NAG CREATE -->
+
+            <!-- ETO OUTPUT PAG NAG CREATE -->
             <div class="row" id="classes">
-                <div class="col" id="output">
-                    <a href="" class="box">
-                        <label for="">Class name</label>
-                        <label for="">Year</label>
-                    </a>
-                </div>
 
-                <div class="col" id="output">
-                    <a href="" class="box">
-                        <label for="">Class name</label>
-                        <label for="">Year</label>
-                    </a>
-                </div>
+                <?php
+                $sql = "SELECT * FROM `block` WHERE `professorID` = '" . $_SESSION['professorID'] . "'";
+                $result = mysqli_query($connect, $sql);
 
-                <div class="col" id="output">
-                    <a href="" class="box">
-                        <label for="">Class name</label>
-                        <label for="">Year</label>
-                    </a> 
-                </div>
+                while ($row = mysqli_fetch_array($result)) {
+                    $blockID = $row['blockID'];
+                ?>
+                    <div class="col" id="output">
+                        <a href="addStudents.php?blockID=<?php echo urlencode($blockID); ?>" class="box">
+                            <label for=""><?php echo $row['blockName'] ?></label>
+                            <label for=""><?php echo $row['year'] ?></label>
+                        </a>
+                    </div>
+                <?php }
+                ?>
 
-                <div class="col" id="output">
-                    <a href="" class="box">
-                        <label for="">Class name</label>
-                        <label for="">Year</label>
-                    </a>
-                </div>
             </div>
         </div>
     </body>
@@ -85,6 +63,6 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
 } else {
     session_destroy();
     echo "<script>alert('Please log in first.')</script>";
-    header("Refresh: 3; url='../login/manager-login.php'");
+    header("Refresh: 3; url='../login/login.php'");
 }
 ?>
