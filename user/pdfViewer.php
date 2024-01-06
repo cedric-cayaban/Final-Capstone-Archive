@@ -9,9 +9,8 @@
 
 <body>
     <?php
-    include "../headers/documentPreview.php"; ?>
-    <h3>Display Title</h3>
-    <h5>display abstract here</h5>
+    include "../headers/documentPreview.php"; 
+    ?>
     <?php
     if (isset($_GET['title'])) {
         $pdf = urldecode($_GET['title']);
