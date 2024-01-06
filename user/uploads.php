@@ -11,17 +11,60 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Project</title>
         <link rel="stylesheet" href="../css files/uploads2.css">
+        <link rel="stylesheet" href="../css files/homepage6.css">
+
         <script src="https://kit.fontawesome.com/979ee355d9.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     </head>
 
     <body>
-        
+
         <?php
-
-        include "../headers/user_header_home.php"; //call header for user
-
+        if (isset($_POST['logout'])) {
+            session_destroy();
+            header("Refresh: 1; url='../login/login.php'");
+            echo "<script>alert('Logged out successfully.')</script>";
+        }
         ?>
+        <header class="d-flex justify-content-between align-items-center">
+            <div class="top-section">
+                <img class="logo" src="../images/psuLogo.svg" alt="PSU Logo" style="max-width: 100px; margin-right: 10px;">
+                <label><b>PANGASINAN STATE UNIVERSITY</b></label>
+            </div>
+
+            <form action="#" method="post" class="system-name">
+                <label for="" id="sys-name">IT CAPSTONE PROJECT INVENTORY</label>
+                <button type="submit" name="logout" id="logout" class="btn">
+                    <img src="../images/power.png" style="width: 40px; border-radius: 50px; border: none;" alt="Logout">
+                </button>
+            </form>
+        </header>
+
+        <nav class="navbar navbar-expand navbar-dark" id="navigation">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navi">
+
+                    <ul class="navbar-nav mb-2 mb-lg-0" id="left-nav">
+
+                        <li class="nav-item">
+                            <a href="user-home.php" class="nav-link ">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="checkers.php" class="nav-link">Checker</a>
+                        </li>
+
+                    </ul>
+
+                    <ul class="navbar-nav" id="right-nav">
+                        <li class="nav-item">
+                            <a href="uploads.php" class="nav-link active">
+                                <i class="fas fa-user fa"></i>&nbsp;&nbsp;Project
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
         <div class="container-fluid" id="cont">
             <form action="uploads.php" method="post" enctype="multipart/form-data">
@@ -45,24 +88,24 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
                     <div class="col" id="multiple">
                         <label for="" id="program-label"><b>Program</b></label>
                         <select name="program" id="program">
-                                <?php
-                                    include('../config.php');
-                                    $program = mysqli_query($connect, "SELECT * FROM major");
-                                    while ($result = mysqli_fetch_array($program)) {
-                                ?>
-                                    <option value="<?php echo $result['majorID'] ?>"><?php echo $result['majorName'] ?></option>
-                                <?php } ?>
+                            <?php
+                            include('../config.php');
+                            $program = mysqli_query($connect, "SELECT * FROM major");
+                            while ($result = mysqli_fetch_array($program)) {
+                            ?>
+                                <option value="<?php echo $result['majorID'] ?>"><?php echo $result['majorName'] ?></option>
+                            <?php } ?>
                         </select>
 
                         <label for="capstoneFile" name="fileContent" id="upload"><b>Upload file</b></label>
                         <input type="file" name="capstoneFile" id="capstoneFile" required>
                     </div>
                 </div>
-                
+
                 <input type="submit" name="submitFile" id="submitFile" value="Submit">
 
             </form>
-            
+
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

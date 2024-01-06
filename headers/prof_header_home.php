@@ -45,6 +45,9 @@ if (isset($_POST['logout'])) {
                     <li class="nav-item">
                         <a href="../manager/inventory.php" class="nav-link">Inventory</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="../manager/archive.php" class="nav-link">Archive</a>
+                    </li>
                 </ul>
             </div>
         </div>

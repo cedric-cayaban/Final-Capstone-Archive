@@ -84,6 +84,9 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                         <li class="nav-item">
                             <a href="../manager/inventory.php" class="nav-link active">Inventory</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="../manager/archive.php" class="nav-link">Archive</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -100,7 +103,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
         }
         if (isset($_POST['view'])) {
             $_SESSION['pdf'] = $_POST['view'];
-            // header("Refresh: 1; url='pdfViewer.php'");
+            header("Refresh: 1; url='pdfViewer.php'");
         }
         ?>
         <div class="container-fluid">

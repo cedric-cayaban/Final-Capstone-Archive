@@ -81,6 +81,9 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                     <li class="nav-item">
                         <a href="../manager/inventory.php" class="nav-link">Inventory</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="../manager/archive.php" class="nav-link">Archive</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -104,7 +107,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
             $res = mysqli_query($connect, $query);
             while ($row = mysqli_fetch_array($res)) {
                 // echo $row['FileContent'];
-                unlink('capstones/' . $row['fileContent']);
+                unlink('../capstones/' . $row['fileContent']);
             }
 
             $select = "DELETE FROM uploaded_capstones WHERE capstoneID = '$UpCapstoneID'";

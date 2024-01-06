@@ -41,7 +41,6 @@
             <label for="">Program</label>
             <select name="program" id=""> <!-- program -->
                 <option value="Bachelor of Science in Information Technology">Bachelor of Science in Information Technology</option>
-                <option value="Software Engineering">Software Engineering</option>
             </select>
 
             <label for="">Major</label>
@@ -56,7 +55,7 @@
             </select>
         <div class="cont">
             <input type="submit" name="btnRegister" value="REGISTER" id="register">
-            <label for="login">Already Have an Account? <a href="student-login.php">Log in</a></label>
+            <label for="login">Already Have an Account? <a href="login.php">Log in</a></label>
         </div>
         
         
@@ -99,12 +98,12 @@ if (isset($_POST['btnRegister'])) {
         $query = mysqli_query($connect, $sql);
         if ($query) {
             echo "<script>alert('Registered succesfully!')</script>";
-            header("Refresh: 1; url='student-login.php'");
+            header("Refresh: 1; url='login.php'");
         } else {
             echo "<script>alert('Error!')</script>";
         }
     }
 } else if (isset($_POST['btnLogin'])) {
-    header("Refresh: 0, url='student-login.php'");
+    header("Refresh: 0, url='login.php'");
 }
 ?>
