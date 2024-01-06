@@ -1,9 +1,52 @@
 <?php
 include "../config.php";
 session_start();
-$blockID = urldecode($_GET['blockID']);
+
+$_SESSION['IDblock'] == "" ? $blockID = urldecode($_GET['blockID']) : $blockID = $_SESSION['IDblock'];
+
 if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
 
+<?php
+    if (isset($_POST['addMemberbtn'])) {
+        $studentID = $_POST['studentID'];
+        $lastName = $_POST['lastName'];
+        $firstName = $_POST['firstName'];
+        $middleName = $_POST['middleName'];
+
+        $select = "SELECT * FROM students WHERE studentID = '$studentID'";
+        $result = mysqli_query($connect, $select);
+
+        if (mysqli_num_rows($result) > 0) {
+            echo '<script>alert("ID Number is already registered!")</script>';
+        } else {
+            $sql = "INSERT INTO `students`(`studentID`, `firstName`, `lastName`, `middleName`, `blockID`) VALUES ('$studentID','$lastName','$firstName','$middleName', '$blockID')";
+            $result = mysqli_query($connect, $sql);
+            if ($result) {
+                echo '<script>alert("Student has been added successfully!")</script>';
+            } else {
+                echo "<script>alert('Error!')</script>";
+            }
+        }
+    }
+
+    if (isset($_POST['removebtn'])) {
+        $studentID = $_POST['studentID'];
+
+        $select = "DELETE FROM students WHERE studentID = '$studentID'";
+        $result = mysqli_query($connect, $select);
+        echo "<script>alert('Student has been removed from this class.')</script>";
+    }
+
+    if (isset($_POST['deleteClassbtn'])) {
+        $select = "DELETE FROM students WHERE blockID = '$blockID'";
+        $result = mysqli_query($connect, $select);
+
+        $select = "DELETE FROM block WHERE blockID = '$blockID'";
+        $result = mysqli_query($connect, $select);
+        echo "<script>alert('Class has been deleted successfully.')</script>";
+        header("Refresh: 0; url='professor_home.php'");
+    }
+    ?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -44,7 +87,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
 
                         <div class="col-md" id="sem-sec">
                             <label for="" id="sem"><b><?php echo $row['semester']; ?></b></label>
-                            <label for="" id="year"><?php echo $row['year']; ?></label>
+                            <label for="" id="year"> <b>A.Y.</b> <?php echo $row['year']; ?></label>
                         </div>
                     </div>
                 <?php } ?>
@@ -111,47 +154,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
 
     </html>
 
-    <?php
-    if (isset($_POST['addMemberbtn'])) {
-        $studentID = $_POST['studentID'];
-        $lastName = $_POST['lastName'];
-        $firstName = $_POST['firstName'];
-        $middleName = $_POST['middleName'];
-
-        $select = "SELECT * FROM students WHERE studentID = '$studentID'";
-        $result = mysqli_query($connect, $select);
-
-        if (mysqli_num_rows($result) > 0) {
-            echo '<script>alert("ID Number is already registered!")</script>';
-        } else {
-            $sql = "INSERT INTO `students`(`studentID`, `firstName`, `lastName`, `middleName`, `blockID`) VALUES ('$studentID','$lastName','$firstName','$middleName', '$blockID')";
-            $result = mysqli_query($connect, $sql);
-            if ($result) {
-                echo '<script>alert("Student has been added successfully!")</script>';
-            } else {
-                echo "<script>alert('Error!')</script>";
-            }
-        }
-    }
-
-    if (isset($_POST['removebtn'])) {
-        $studentID = $_POST['studentID'];
-
-        $select = "DELETE FROM students WHERE studentID = '$studentID'";
-        $result = mysqli_query($connect, $select);
-        echo "<script>alert('Student has been removed from this class.')</script>";
-    }
-
-    if (isset($_POST['deleteClassbtn'])) {
-        $select = "DELETE FROM students WHERE blockID = '$blockID'";
-        $result = mysqli_query($connect, $select);
-
-        $select = "DELETE FROM block WHERE blockID = '$blockID'";
-        $result = mysqli_query($connect, $select);
-        echo "<script>alert('Class has been deleted successfully.')</script>";
-        header("Refresh: 0; url='professor_home.php'");
-    }
-    ?>
+    
 
     <!-- display all students that belong in this class -->
 

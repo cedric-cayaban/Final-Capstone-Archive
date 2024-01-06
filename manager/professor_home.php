@@ -46,6 +46,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                 ?>
                     <div class="col" id="output">
                         <a href="addStudents.php?blockID=<?php echo urlencode($blockID); ?>" class="box">
+                            <?php $_SESSION['IDblock'] = "" ?>
                             <label for=""><?php echo $row['blockName'] ?></label>
                             <label for=""><?php echo $row['year'] ?></label>
                         </a>
