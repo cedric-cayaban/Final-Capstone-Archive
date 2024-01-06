@@ -6,7 +6,7 @@ $_SESSION['IDblock'] == "" ? $blockID = urldecode($_GET['blockID']) : $blockID =
 
 if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
 
-<?php
+    <?php
     if (isset($_POST['addMemberbtn'])) {
         $studentID = $_POST['studentID'];
         $lastName = $_POST['lastName'];
@@ -46,6 +46,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
         echo "<script>alert('Class has been deleted successfully.')</script>";
         header("Refresh: 0; url='professor_home.php'");
     }
+
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -61,7 +62,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
     <body>
         <?php include "../headers/prof_header_home.php"; ?>
 
-        <form action="">
+        <form action="" method="post">
             <div class="row">
                 <div class="col-md" id="delete-sec">
                     <button type="submit" class="btn btn-danger" id="delete" name="deleteClassbtn">Delete Class</button>
@@ -153,10 +154,6 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
     </body>
 
     </html>
-
-    
-
-    <!-- display all students that belong in this class -->
 
 <?php
 } else {
