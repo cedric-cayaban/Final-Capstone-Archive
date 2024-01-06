@@ -14,7 +14,7 @@ body{
 .header{
   display: flex;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 5%;
 }
 
 .text-header{
@@ -38,7 +38,7 @@ body{
   display: flex;
   justify-content: center;
   font-family: "Poppins", sans-serif;
-  margin-bottom: 50px;
+  margin-bottom: 10%;
   font-size: 1.09rem;
 }
 
@@ -117,7 +117,7 @@ body{
 
 
 .buttons{
-    margin-top: 4%;
+    margin-top: 10%;
     display: flex;
     justify-content: center;
 }

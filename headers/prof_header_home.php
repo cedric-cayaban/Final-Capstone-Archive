@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css files/admin-header2.css">
+    <link rel="stylesheet" href="../css files/admin-header4.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">  
     <title>Document</title>
 </head>
@@ -40,7 +40,7 @@ if (isset($_POST['logout'])) {
                         <a href="../manager/professor_home.php" class="nav-link active">Class</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../manager/submission.php" class="nav-link">Submission</a>
+                        <a href="../manager/submission.php" class="nav-link ">Submission</a>
                     </li>
                     <li class="nav-item">
                         <a href="../manager/inventory.php" class="nav-link">Inventory</a>

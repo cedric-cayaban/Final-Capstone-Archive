@@ -9,7 +9,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css files/admin-header2.css">
+        <link rel="stylesheet" href="../css files/admin-header4.css">
         <script src="https://kit.fontawesome.com/979ee355d9.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <style>
@@ -57,37 +57,37 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
     ?>
 
     <body>
-    <header class="d-flex justify-content-between align-items-center">
-        <div class="top-section">
-            <img class="logo" src="../images/psuLogo.svg" alt="PSU Logo" style="max-width: 100px; margin-right: 10px;">
-            <label><b>PANGASINAN STATE UNIVERSITY</b></label>
-        </div>
-       
-        <form action="#" method="post" class="system-name">
-            <label for="" id="sys-name">IT CAPSTONE PROJECT INVENTORY</label>
-            <button type="submit" name="logout" id="logout" class="btn">
-                <img src="../images/power.png" style="width: 40px; border-radius: 50px; border: none;" alt="Logout">
-            </button>
-        </form>
-    </header>
-
-    <nav class="navbar navbar-expand navbar-dark ">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mb-2 mb-lg-0" id="left-nav">
-                    <li class="nav-item">
-                        <a href="../manager/professor_home.php" class="nav-link ">Class</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../manager/submission.php" class="nav-link">Submission</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../manager/inventory.php" class="nav-link active">Inventory</a>
-                    </li>
-                </ul>
+        <header class="d-flex justify-content-between align-items-center">
+            <div class="top-section">
+                <img class="logo" src="../images/psuLogo.svg" alt="PSU Logo" style="max-width: 100px; margin-right: 10px;">
+                <label><b>PANGASINAN STATE UNIVERSITY</b></label>
             </div>
-        </div>
-    </nav>
+        
+            <form action="#" method="post" class="system-name">
+                <label for="" id="sys-name">IT CAPSTONE PROJECT INVENTORY</label>
+                <button type="submit" name="logout" id="logout" class="btn">
+                    <img src="../images/power.png" style="width: 40px; border-radius: 50px; border: none;" alt="Logout">
+                </button>
+            </form>
+        </header>
+
+        <nav class="navbar navbar-expand navbar-dark ">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mb-2 mb-lg-0" id="left-nav">
+                        <li class="nav-item">
+                            <a href="../manager/professor_home.php" class="nav-link">Class</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../manager/submission.php" class="nav-link">Submission</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../manager/inventory.php" class="nav-link active">Inventory</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
         <?php
         if (isset($_POST['archive'])) {

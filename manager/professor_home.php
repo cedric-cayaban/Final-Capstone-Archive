@@ -9,7 +9,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css files/prof-home2.css">
+        <link rel="stylesheet" href="../css files/prof-home3.css">
         <script src="https://kit.fontawesome.com/979ee355d9.js" crossorigin="anonymous"></script>
         <title>Capstone Archive</title>
     </head>
