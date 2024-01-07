@@ -47,6 +47,10 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
         header("Refresh: 0; url='professor_home.php'");
     }
 
+    if (isset($_POST['addGroupsbtn'])) {
+        $_SESSION['GBlockID'] = $blockID;
+        header("Refresh: 0; url='addGroups.php'");
+    }
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -71,7 +75,6 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
         </form>
         <div class="container-fluid" id="contents">
             <form action="" method="post">
-
                 <?php
                 $sql = "SELECT * FROM block WHERE blockID = '$blockID'";
                 $result = mysqli_query($connect, $sql);
@@ -116,6 +119,10 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                     </div>
 
                 </div>
+            </form>
+            <form action="" method="post">
+                <button type="submit" class="btn btn-primary" id="delete" name="viewGroupsbtn" style="color: white;">View Groups</button>
+                <button type="submit" class="btn btn-primary" id="delete" name="addGroupsbtn" style="color: white;">Add Groups</button>
             </form>
 
             <table class="table table-bordered">

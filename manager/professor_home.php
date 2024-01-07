@@ -24,7 +24,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
 
             <div class="row mt-5" id="top">
                 <div class="col" id="title-section">
-                    <label for="" id="title"><b>Capstone Projects</b></label>
+                    <label for="" id="title"><b>Capstone Project (Classes)</b></label>
                 </div>
                 <div class="col" id="create-section">
                     <a href="createClass.php" id="create">

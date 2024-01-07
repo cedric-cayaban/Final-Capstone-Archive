@@ -43,9 +43,13 @@
                     <li class="nav-item">
                         <a href="checkers.php" class="nav-link">Checker</a>
                     </li>
-                    
+                    <?php
+        include "../config.php";
+        $userID = $_SESSION['userID'];
+        $sql = "SELECT * FROM groups WHERE leaderID = '$userID'";
+        $result = mysqli_query($connect, $sql);
+        if ($row = mysqli_num_rows($result) > 0) { ?>
                 </ul>
-
                 <ul class="navbar-nav" id="right-nav">
                     <li class="nav-item">
                         <a href="uploads.php" class="nav-link">
@@ -53,6 +57,7 @@
                         </a>
                     </li>
                 </ul>
+                <?php } ?>
             </div>
         </div>
     </nav>

@@ -153,6 +153,10 @@ if (isset($_POST['submitFile'])) {
     if ($upload) {
         $sql = 'INSERT INTO `uploaded_capstones`(`capstoneTitle`, `capstoneAbstract`, `dateCreated`, `fileContent`, `dateFileUploaded`, `majorID`, `status`) VALUES ("' . $title . '","' . $abstract . '","' . $dateCreated . '","' . $fileName . '","' . $dateTime . '","' . $program . '","pending")';
         $result = mysqli_query($connect, $sql);
+
+        $sql = "UPDATE groups SET status = 'finished' WHERE leaderID = '".$_SESSION['userID']."'";
+        $result = mysqli_query($connect, $sql);
+
         echo '<script>alert("Capstone has been uploaded successfully!")</script>';
     }
 }
