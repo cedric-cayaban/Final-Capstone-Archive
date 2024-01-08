@@ -8,18 +8,43 @@ if (isset($_POST['returnbtn'])) {
 }
 
 if (isset($_POST['deletebtn'])) {
-    $query = "DELETE FROM `groups` WHERE groupID = '$groupID'";
-    // $execute = mysqli_query($connect, $query);
-    
+
     $program = mysqli_query($connect, "SELECT * FROM groups WHERE groupID = '$groupID'");
-        while ($result = mysqli_fetch_array($program)) {
-            $leader = "";
-            $m1 = "";
-            $m2 = "";
-            $m3 = "";
-            $m4 = "";
-            $m5 = "";
+    while ($result = mysqli_fetch_array($program)) {
+        $leader = $result['leaderID'];
+        $m1 = $result['member1ID'];
+        $m2 = $result['member2ID'];
+        $m3 = $result['member3ID'];
+        $m4 = $result['member4ID'];
+        $m5 = $result['member5ID'];
+
+        if ($leader != "") {
+            $query = "UPDATE `students` SET `groupID`='0' WHERE `studentID` = '" . $leader . "'";
+            $result = mysqli_query($connect, $query);
         }
+        if ($m1 != "") {
+            $query = "UPDATE `students` SET `groupID`='0' WHERE `studentID` = '" . $m1 . "'";
+            $result = mysqli_query($connect, $query);
+        }
+        if ($m2 != "") {
+            $query = "UPDATE `students` SET `groupID`='0' WHERE `studentID` = '" . $m2 . "'";
+            $result = mysqli_query($connect, $query);
+        }
+        if ($m3 != "") {
+            $query = "UPDATE `students` SET `groupID`='0' WHERE `studentID` = '" . $m3 . "'";
+            $result = mysqli_query($connect, $query);
+        }
+        if ($m4 != "") {
+            $query = "UPDATE `students` SET `groupID`='0' WHERE `studentID` = '" . $m4 . "'";
+            $result = mysqli_query($connect, $query);
+        }
+        if ($m5 != "") {
+            $query = "UPDATE `students` SET `groupID`='0' WHERE `studentID` = '" . $m5 . "'";
+            $result = mysqli_query($connect, $query);
+        }
+    }
+    $query = "DELETE FROM `groups` WHERE groupID = '$groupID'";
+    $execute = mysqli_query($connect, $query);
     header("Refresh: 0; url='viewGroups.php'");
 }
 
@@ -41,14 +66,14 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
             <div class="wrapper">
                 <div class="label">
                     <label for=""><b>
-                    <?php
-                    include('../config.php');
-                    $program = mysqli_query($connect, "SELECT * FROM groups WHERE groupID = '$groupID'");
-                    while ($result = mysqli_fetch_array($program)) {
-                        echo $result['title'];
-                    ?> 
-                    <?php } ?>
-                    </b></label>
+                            <?php
+                            include('../config.php');
+                            $program = mysqli_query($connect, "SELECT * FROM groups WHERE groupID = '$groupID'");
+                            while ($result = mysqli_fetch_array($program)) {
+                                echo $result['title'];
+                            ?>
+                            <?php } ?>
+                        </b></label>
                 </div>
 
                 <div class="row">
