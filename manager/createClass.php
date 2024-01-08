@@ -45,7 +45,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css files/create-class2.css">
+        <link rel="stylesheet" href="../css files/create-class6.css">
         <title>Document</title>
     </head>
 

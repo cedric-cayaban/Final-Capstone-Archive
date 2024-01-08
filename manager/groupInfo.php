@@ -56,7 +56,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css files/create-class2.css">
+        <link rel="stylesheet" href="../css files/create-class6.css">
         <title>Group Info</title>
     </head>
 
@@ -65,7 +65,8 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
         <form action="" method="post" id="inputs">
             <div class="wrapper">
                 <div class="label">
-                    <label for=""><b>
+                    <label for="" id="title-gname">
+                        <b>
                             <?php
                             include('../config.php');
                             $program = mysqli_query($connect, "SELECT * FROM groups WHERE groupID = '$groupID'");
@@ -73,7 +74,8 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                                 echo $result['title'];
                             ?>
                             <?php } ?>
-                        </b></label>
+                        </b>
+                    </label>
                 </div>
 
                 <div class="row">
@@ -170,10 +172,14 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                         </select>
                     </div>
                 </div>
-
+                
+                <div class="functions">
+                    <button type="submit" name="deletebtn" id="deletebtn">Delete Group</button>
+                    <button type="submit" name="returnbtn" id="returnbtn">Return</button>
+                </div>
+                
             </div>
-            <button type="submit" name="deletebtn" id="createbtn">Delete Group</button>
-            <button type="submit" name="returnbtn" id="createbtn">Return</button>
+            
         </form>
     </body>
 

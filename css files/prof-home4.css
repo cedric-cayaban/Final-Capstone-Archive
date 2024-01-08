@@ -192,6 +192,7 @@ header {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
+
 .group-title{
     
     width: 250px;
@@ -225,6 +226,9 @@ header {
     cursor: pointer;
 }
 
+#title-group:hover{
+    cursor: pointer;
+}
 
 
 

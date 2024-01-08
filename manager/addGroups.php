@@ -78,7 +78,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css files/create-class2.css">
+        <link rel="stylesheet" href="../css files/create-class6.css">
         <title>Document</title>
     </head>
 
@@ -199,7 +199,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
 
             </div>
             <button type="submit" name="createbtn" id="createbtn">Create</button>
-            <a href="addStudents.php?blockID=<?php echo urlencode($GBlockID); ?>" class="box">Cancel
+            <a href="addStudents.php?blockID=<?php echo urlencode($GBlockID); ?>" class="cancelbtn">Cancel
             <?php $_SESSION['IDblock'] = "" ?>
             </a>
         </form>

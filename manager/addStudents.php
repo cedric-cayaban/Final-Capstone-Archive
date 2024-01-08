@@ -63,58 +63,68 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css files/add-students.css">
+        <link rel="stylesheet" href="../css files/add-students2.css">
         <title>Document</title>
     </head>
 
     <body>
         <?php include "../headers/prof_header_home.php"; ?>
 
-        <form action="" method="post">
-            <div class="row">
-                <div class="col-md" id="delete-sec">
-                    <button type="submit" class="btn btn-danger" id="delete" name="deleteClassbtn">Delete Class</button>
-                </div>
-            </div>
-        </form>
+        
         <div class="container-fluid" id="contents">
+        
             <form action="" method="post">
                 <?php
                 $sql = "SELECT * FROM block WHERE blockID = '$blockID'";
                 $result = mysqli_query($connect, $sql);
                 while ($row = mysqli_fetch_array($result)) { ?>
                     <div class="row">
-                        <div class="col-md-8" id="id-sec">
-                            <label for=""><b>ID Number</b></label>
-                            <input type="text" name="studentID" id="stud-id" required>
+                        
+                        <div class="row">
+                            <div class="col-md" id="block-sec">
+                                <label for="" id="blocks"><b>BSIT <?php echo $row['blockName']; ?></b></label>
+                            </div>
+                            <div class="col-md" id="sem-sec">
+                                <label for="" id="sem"><b><?php echo $row['semester']; ?></b></label>
+                                <label for="" id="year"> <b>A.Y. <?php echo $row['year']; ?></b></label>
+                            </div>
                         </div>
-
-                        <div class="col-md" id="block-sec">
-                            <label for=""><b>BSIT <?php echo $row['blockName']; ?></b></label>
+                        
+                       <div class="row">
+                        <div class="col-md">
+                            <label for="" id="fixed">Add members to this class</label>
                         </div>
-
-                        <div class="col-md" id="sem-sec">
-                            <label for="" id="sem"><b><?php echo $row['semester']; ?></b></label>
-                            <label for="" id="year"> <b>A.Y.</b> <?php echo $row['year']; ?></label>
-                        </div>
+                            <div class="col-md" id="delete-sec">
+                                <button type="submit" class="btn btn-danger" id="delete" name="deleteClassbtn">Delete Class</button>
+                            </div>
+                       </div>
+                        
+                        
+                        
                     </div>
                 <?php } ?>
-
-
+                
+                <div class="row">
+                    <div class="col-md-8" id="id-sec">
+                        <label for=""  id="infos">ID Number</label>
+                        <input type="text" name="studentID" id="stud-id" required>
+                    </div>
+                </div>
+                
                 <div class="row" id="row2">
 
-                    <div class="col" id="lName-sec">
-                        <label for=""><b>Last Name</b></label>
+                    <div class="col-md" id="lName-sec">
+                        <label for="" id="infos">Last Name</label>
                         <input type="text" name="lastName" id="lName" required>
                     </div>
 
-                    <div class="col" id="fname-sec">
-                        <label for=""><b>First Name</b></label>
+                    <div class="col-md" id="fname-sec">
+                        <label for=""  id="infos">First Name</label>
                         <input type="text" name="firstName" id="fName" required>
                     </div>
 
-                    <div class="col" id="mName-sec">
-                        <label for=""><b>Middle Name</b></label>
+                    <div class="col-md" id="mName-sec">
+                        <label for=""  id="infos">Middle Name</label>
                         <input type="text" name="middleName" id="mName" required>
                     </div>
 
@@ -123,11 +133,17 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                     </div>
 
                 </div>
+                
+                
             </form>
-            <form action="" method="post">
+
+             <form action="" method="post" class="lowest-part">
                 <button type="submit" class="btn btn-primary" id="delete" name="viewGroupsbtn" style="color: white;">View Groups</button>
                 <button type="submit" class="btn btn-primary" id="delete" name="addGroupsbtn" style="color: white;">Add Groups</button>
             </form>
+           
+                
+            
 
             <table class="table table-bordered">
                 <thead class="thead-dark">
