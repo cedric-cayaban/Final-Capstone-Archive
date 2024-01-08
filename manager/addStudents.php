@@ -51,6 +51,10 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
         $_SESSION['GBlockID'] = $blockID;
         header("Refresh: 0; url='addGroups.php'");
     }
+    if (isset($_POST['viewGroupsbtn'])) {
+        $_SESSION['GBlockID'] = $blockID;
+        header("Refresh: 0; url='viewGroups.php'");
+    }
     ?>
     <!DOCTYPE html>
     <html lang="en">

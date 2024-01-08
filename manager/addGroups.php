@@ -35,6 +35,11 @@ if (isset($_POST['createbtn'])) {
             $query = "INSERT INTO `groups`(`title`, `leaderID`, `member1ID`, `member2ID`, `member3ID`, `member4ID`, `member5ID`, `status`, `blockID`) VALUES ('$title','$leader','$member1','$member2','$member3','$member4','$member5','on-going','$GBlockID')";
             $result = mysqli_query($connect, $query);
 
+            $select = "SELECT * FROM `groups` WHERE leaderID = '$leader'";
+            $result = mysqli_query($connect, $select);
+            while ($row = mysqli_fetch_array($result)){
+                $_SESSION['groupID'] = $row['groupID'];
+            }
             $query = "UPDATE `students` SET `groupID`='$GBlockID' WHERE `studentID` = '$leader'";
             $result = mysqli_query($connect, $query);
 
@@ -60,39 +65,9 @@ if (isset($_POST['createbtn'])) {
             }
 
             echo '<script>alert("Group has been created successfully.")</script>';
+            header("Refresh: 1; url='groupInfo.php");
         }
     }
-    
-
-
-    // if ($startYear == $endYear) {
-    //     $year = $startYear;
-    // } else {
-    //     $year = $startYear . '-' . $endYear;
-    // }
-    // $professorID = $_SESSION['professorID'];
-    // $blockID = "";
-    // if ($className == "") {
-    //     echo '<script>alert("Please enter a class name.")</script>';
-    // } else {
-    //     $select = "SELECT * FROM block WHERE blockName = '$className' AND semester = '$semester' AND year = '$year'";
-    //     $result = mysqli_query($connect, $select);
-
-    //     if (mysqli_num_rows($result) > 0) {
-    //         echo '<script>alert("Class already exists!")</script>';
-    //     } else {
-    //         $sql = "INSERT INTO `block`(`blockName`, `professorID`, `semester`, `year`) VALUES ('$className','$professorID','$semester','$year')";
-    //         $result = mysqli_query($connect, $sql);
-
-    //         $select = "SELECT * FROM block WHERE blockName = '$className' AND semester = '$semester' AND year = '$year'";
-    //         $res = mysqli_query($connect, $select);
-    //         while ($row = mysqli_fetch_array($res)) {
-    //             $_SESSION['IDblock'] = $row['blockID'];
-    //         }
-    //         echo '<script>alert("Block has been created successfully!")</script>';
-    //         header("Refresh: 1; url='addStudents.php");
-    //     }
-    // }
 }
 
 if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
@@ -224,6 +199,9 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
 
             </div>
             <button type="submit" name="createbtn" id="createbtn">Create</button>
+            <a href="addStudents.php?blockID=<?php echo urlencode($GBlockID); ?>" class="box">Cancel
+            <?php $_SESSION['IDblock'] = "" ?>
+            </a>
         </form>
     </body>
 
