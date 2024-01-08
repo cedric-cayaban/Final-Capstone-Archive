@@ -156,29 +156,30 @@ header {
     border: solid #1935DA 1px;
     padding: 10px 15px;
     border-radius: 5px;
+    background-color: #1935DA;
+    color: white;
 }
 
 #create-section{
     display: flex;
     justify-content: flex-end;
-    margin-right: 10%;
+    margin-right: 12%;
 }
 
 #output{
-
     height: 200px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    
 }
 
 #classes{
     margin-top: 1%;
+    
 }
 
 .box{
-    padding-top:  11%;
-    align-self: center;
+    padding-top:  13%;
     width: 250px;
     text-decoration: none;
     margin-top: 2%;
@@ -186,26 +187,47 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid #1935DA 2px;
+    border: solid #1935DA 1px;
     border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.container{
+.group-title{
     
-    min-height: 100vh;
+    width: 250px;
+    text-decoration: none;
+    margin-top: 2%;
+    height: 150px;
     display: flex;
-    
-    
+    align-items: center;
+    text-align: center;
+    border: solid #1935DA 1px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
 
+.box-label:hover{
+    cursor: pointer;
+   
+}
+
+.box-label{
+    font-weight: bold;
+}
+
+.box:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.group-title:hover{
+    text-decoration: none;
+    cursor: pointer;
 }
 
 
 
-.content{
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-}
+
 
 
 
