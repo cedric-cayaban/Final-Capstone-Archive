@@ -61,7 +61,7 @@
             </div>
         </nav>
 
-    <form action="checker.php">
+    <form action="result.php">
 
     <div class="container-fluid py-5">
        <div class="row" id="">
@@ -80,16 +80,7 @@
        <input type="submit" value="Check" id="button">
     </div>
 
-    <div class="container-fluid">
-        <div class="recommend">
-            <label for="">Title Recommendation</label>
-            <ul>
-                <li><p>title 1</p></li>
-                <li><p>title 2</p></li>
-                <li><p>title 3</p></li>
-            </ul>
-        </div>
-    </div>
+    
     
     </form>
     
