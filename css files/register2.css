@@ -341,7 +341,16 @@ header {
   margin-top: 20px;
   margin-bottom: 10px;
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
   font-size: 0.8rem;
+}
+
+#back-login{
+    font-weight: 300;
+}
+
+.cont a{
+    text-decoration: none;
 }
 
 

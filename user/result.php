@@ -42,7 +42,7 @@ require __DIR__.'/vendor/autoload.php';
 
 use Orhanerday\OpenAi\OpenAi;
 
-$openAiKey = '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'; 
+$openAiKey = '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'; 
 $openAi = new OpenAi($openAiKey);
 
 $prompt = isset($_POST['proposal_title']) ? $_POST['proposal_title'] : '';
@@ -96,7 +96,7 @@ if (!empty($prompt2)) {
 }
 
 // Third request
-$openAiKey3 = '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'; // Replace with your third API key
+$openAiKey3 = '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'; // Replace with your third API key
 $openAi3 = new OpenAi($openAiKey3);
 
 $prompt3 = $prompt;

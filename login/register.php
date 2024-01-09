@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="..\css files\register.css">
+    <link rel="stylesheet" href="..\css files\register2.css">
     
     <title>Registration</title>
 </head>
@@ -55,7 +55,7 @@
             </select>
         <div class="cont">
             <input type="submit" name="btnRegister" value="REGISTER" id="register">
-            <label for="login">Already Have an Account? <a href="login.php">Log in</a></label>
+            <label for="login" id="back-login">Already Have an Account? <a href="login.php">Log in</a></label>
         </div>
         
         
