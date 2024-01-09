@@ -354,7 +354,10 @@ input[type="number"] {
     margin-bottom: 10px;
 }
 
-
+#results{
+    display: flex;
+    flex-direction: column;
+}
 
 .search-section{
     width: 80%;
