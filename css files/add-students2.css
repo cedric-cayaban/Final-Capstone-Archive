@@ -5,6 +5,7 @@
 #stud-id{
     width: 40%;
     height: 40px;
+    padding: 10px;
 }
 
 #add-sec{
@@ -17,14 +18,14 @@
 
 #add{
     height: 50px;
-    width: 80%;
+    width: 200px;
 }
 
 #delete-sec{
    padding-top: 1%;
-   display: flex;
-   justify-content: flex-end;
-   padding-right: 5%;
+    display: flex;
+    justify-content: flex-end;
+   
 }
 
 
@@ -42,10 +43,19 @@
 #block-sec{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    
    
     /* border: solid black 1px; */
     
+}
+
+#infos{
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.lowest-part{
+    padding-bottom: 2%;
 }
 
 #sem-sec{
@@ -53,7 +63,13 @@
     /* border: solid black 1px; */
    display: flex;
    flex-direction: column;
-   align-items: flex-start;
+   justify-content: center;
+   align-items: flex-end;
+   padding-top: 1%;
+}
+
+#fixed{
+    font-weight: 700;
 }
 
 #year{
@@ -62,12 +78,14 @@
 }
 
 #block-sec label{
-    font-size: 1.4rem;
+    padding-top: 2%;
+    font-size: 2rem;
     
 }
 
 #sem{
     font-size: 1.4rem;
+    opacity: 0.8;
     
 }
 
@@ -99,14 +117,38 @@
  #lName{
     width: 100%;
     height: 40px;
+    padding: 10px;
  }
 
  #fName{
     width: 100%;
     height: 40px;
+    padding: 10px;
  }
 
  #mName{
     width: 100%;
     height: 40px;
+    padding: 10px;
  }
+
+ .table {
+    width: 100%; /* or a specific width */
+}
+
+.table th, .table td {
+    max-width: 150px; /* or adjust based on your needs */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+#stud-id,
+#lName,
+#fName,
+#mName {
+    max-width: 300px; /* or adjust based on your needs */
+}
+
+

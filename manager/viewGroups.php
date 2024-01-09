@@ -57,7 +57,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                                 <div class="col-md-3" id="output">
                                     <a href="groupInfo.php?groupID=<?php echo urlencode($groupID); ?>" class="group-title">
                                         <?php $_SESSION['groupID'] = ""; ?>
-                                        <label for="" class="box-label"><?php echo $groups[$j]['title']; ?></label>
+                                        <label for="" id="title-group"><?php echo $groups[$j]['title']; ?></label>
                                     </a>
                                 </div>
                             <?php } ?>

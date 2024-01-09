@@ -13,6 +13,42 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <title>Professor Approval</title>
     </head>
+    <style>
+            .center {
+                text-align: center;
+                margin-top: 50px;
+            }
+
+             th{
+                
+                color: white;
+                text-align: center;
+                background-color: #3D3B40 !important;
+            }
+
+            
+            td {
+                text-align: center;
+            }
+
+            #logout {
+                border: none;
+                background-color: white;
+                margin-top: 2%;
+            }
+
+            table{
+                margin-top: 1%;
+            }
+
+            .container-fluid{
+            
+            padding-left: 3%;
+            padding-right: 3%;
+        }
+
+            
+        </style>
 
     <?php
     if (isset($_POST['logout'])) {
@@ -70,8 +106,9 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
             $_SESSION['pdf'] = $_POST['view'];
         }
         ?>
+        <div class="container-fluid">
         <table class="table table-bordered">
-            <thead class="thead-dark">
+            <thead class="thead">
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
@@ -107,6 +144,8 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                 <?php } ?>
             </tbody>
         </table>
+        </div>
+        
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
