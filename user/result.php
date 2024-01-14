@@ -137,7 +137,7 @@ $response2 = $response2["choices"][0]["text"];
             </div>
 
             <form action="#" method="post" class="system-name">
-                <label for="" id="sys-name">Welcome,<?php echo $username;?>!</label>
+                <label for="" id="sys-name">Welcome, <?php echo $username;?>!</label>
                 <button type="submit" name="logout" id="logout" class="btn">
                     <img src="../images/power.png" style="width: 40px; border-radius: 50px; border: none;" alt="Logout">
                 </button>
@@ -194,7 +194,7 @@ $response2 = $response2["choices"][0]["text"];
                 />
                 <text x="18" y="20.35" class="percentage"><?php echo "$response"."%"; ?></text>
                 </svg>
-                <div style="text-align:center;   margin-right: 8%; font-size:">
+                <div style="text-align:center;   margin-right: 8%;"> <!-- font size not yet specified -->
                     <label for="" ><h3>Uniqueness</h3></label> 
                 </div>
             </div>
