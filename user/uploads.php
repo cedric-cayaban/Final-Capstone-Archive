@@ -84,7 +84,7 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
                     </div>
                     <div class="col" id="date">
                         <label for=""><b>Date Created</b></label>
-                        <input type="date" name="dateCreated" id="cDate" required>
+                        <input type="month" name="dateCreated" id="cDate" required>
                     </div>
                 </div>
 
@@ -160,7 +160,7 @@ if (isset($_POST['submitFile'])) {
     }
 
     if ($upload) {
-        $sql = 'INSERT INTO `uploaded_capstones`(`capstoneTitle`, `capstoneAbstract`, `dateCreated`, `fileContent`, `dateFileUploaded`, `majorID`, `status`) VALUES ("' . $title . '","' . $abstract . '","' . $dateCreated . '","' . $fileName . '","' . $dateTime . '","' . $program . '","pending")';
+        $sql = 'INSERT INTO `uploaded_capstones`(`capstoneTitle`, `capstoneAbstract`, `dateCreated`, `fileContent`, `dateFileUploaded`, `majorID`, `status`, userID) VALUES ("' . $title . '","' . $abstract . '","' . $dateCreated . '","' . $fileName . '","' . $dateTime . '","' . $program . '","pending", "'.$userID.'")';
         $result = mysqli_query($connect, $sql);
 
         $sql = "UPDATE groups SET status = 'finished' WHERE leaderID = '".$_SESSION['userID']."'";

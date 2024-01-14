@@ -122,14 +122,14 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                         <th>ID</th>
                         <th>Title</th>
                         <th>Date Created</th>
-                        <th>File Name</th>
+                        <th>Uploaded By</th>
                         <th>Date File Uploaded</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $query = "SELECT * FROM uploaded_capstones WHERE status = 'approved' ORDER BY capstoneID ASC";
+                    $query = "SELECT * FROM uploaded_capstones WHERE status = 'approved' ORDER BY capstoneID DESC";
                     $result = mysqli_query($connect, $query);
                     while ($row = mysqli_fetch_array($result)) {
                         $pdf = $row['fileContent'];
@@ -138,7 +138,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                             <td><?php echo $row['capstoneID']; ?></td>
                             <td><?php echo $row['capstoneTitle']; ?></td>
                             <td><?php echo $row['dateCreated']; ?></td>
-                            <td><?php echo $row['fileContent']; ?></td>
+                            <td><?php echo $row['userID']; ?></td>
                             <td><?php echo $row['dateFileUploaded']; ?></td>
                             <td>
                                 <form action="" method="post">

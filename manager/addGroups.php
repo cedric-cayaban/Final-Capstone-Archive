@@ -32,7 +32,7 @@ if (isset($_POST['createbtn'])) {
         if(mysqli_num_rows($res) > 0){
             echo '<script>alert("Student is already in a group.")</script>';
         }else{
-            $query = "INSERT INTO `groups`(`title`, `leaderID`, `member1ID`, `member2ID`, `member3ID`, `member4ID`, `member5ID`, `status`, `blockID`) VALUES ('$title','$leader','$member1','$member2','$member3','$member4','$member5','on-going','$GBlockID')";
+            $query = "INSERT INTO `groups`(`title`, professorID, `leaderID`, `member1ID`, `member2ID`, `member3ID`, `member4ID`, `member5ID`, `status`, `blockID`) VALUES ('$title', '".$_SESSION['professorID']."', '$leader','$member1','$member2','$member3','$member4','$member5','on-going','$GBlockID')";
             $result = mysqli_query($connect, $query);
 
             $select = "SELECT * FROM `groups` WHERE leaderID = '$leader'";
