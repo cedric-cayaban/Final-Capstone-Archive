@@ -63,7 +63,7 @@ require __DIR__.'/vendor/autoload.php';
 
 use Orhanerday\OpenAi\OpenAi;
 
-$open_ai_key = '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';
+$open_ai_key = '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';
 
 $open_ai = new OpenAi($open_ai_key);
 
@@ -73,7 +73,7 @@ $complete = $open_ai->completion([
     'model' => 'gpt-3.5-turbo-instruct',
     'prompt' => "Rate this proposal project" . "'". $prompt2."'" ."  uniqueness result should be percent of uniqueness, do not include the percentage sign. Just output the number and it should be a whole number, no further explanation is needed", //prompt 1
     'temperature' => 0.9,
-    'max_tokens' => 900,
+    'max_tokens' => 500,
     'frequency_penalty' => 0,
     'presence_penalty' => 0.6,
 ]);
@@ -85,7 +85,7 @@ $complete1 = $open_ai->completion([
     'model' => 'gpt-3.5-turbo-instruct',
     'prompt' => "Give me 10 capstone titles like to this title" . $prompt, 
     'temperature' => 0.9,
-    'max_tokens' => 900,
+    'max_tokens' => 500,
     'frequency_penalty' => 0,
     'presence_penalty' => 0.6,
 ]);
@@ -97,7 +97,7 @@ $complete2 = $open_ai->completion([
     'model' => 'gpt-3.5-turbo-instruct',
     'prompt' => "'How many of the titles are related to this project'. $prompt.'this are the list of titles '.$valuesString .'result should be list of all titles related '", //promt2
     'temperature' => 0.9,
-    'max_tokens' => 900,
+    'max_tokens' => 500,
     'frequency_penalty' => 0,
     'presence_penalty' => 0.6,
 ]);
@@ -137,7 +137,7 @@ $response2 = $response2["choices"][0]["text"];
             </div>
 
             <form action="#" method="post" class="system-name">
-                <label for="" id="sys-name">Welcome! <?php echo $username;?></label>
+                <label for="" id="sys-name">Welcome,<?php echo $username;?>!</label>
                 <button type="submit" name="logout" id="logout" class="btn">
                     <img src="../images/power.png" style="width: 40px; border-radius: 50px; border: none;" alt="Logout">
                 </button>
@@ -159,13 +159,20 @@ $response2 = $response2["choices"][0]["text"];
 
                     </ul>
 
-                    <ul class="navbar-nav" id="right-nav">
-                        <li class="nav-item">
-                            <a href="uploads.php" class="nav-link ">
-                                <i class="fas fa-user fa"></i>&nbsp;&nbsp;Project
-                            </a>
-                        </li>
-                    </ul>
+                    <?php
+        include "../config.php";
+        $userID = $_SESSION['userID'];
+        $sql = "SELECT * FROM groups WHERE leaderID = '$userID'";
+        $result = mysqli_query($connect, $sql);
+        if ($row = mysqli_num_rows($result) > 0) { ?>
+                <ul class="navbar-nav" id="right-nav">
+                    <li class="nav-item">
+                        <a href="uploads.php" class="nav-link">
+                            <i class="fas fa-user fa"></i>&nbsp;&nbsp;Project
+                        </a>
+                    </li>
+                </ul>
+                <?php } ?>
                 </div>
             </div>
         </nav>

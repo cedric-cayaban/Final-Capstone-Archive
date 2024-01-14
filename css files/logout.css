@@ -1,0 +1,45 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald:400);
+
+
+
+
+
+.new-logout {
+  font-size: .5em;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  right:-2px;
+  bottom: -4px;
+  overflow: hidden;
+  letter-spacing: 2px;
+  opacity: 0;
+  transition: opacity .45s;
+  -webkit-transition: opacity .35s;
+  
+}
+
+.new-button {
+  text-decoration: none;
+  float: right;
+  padding: 5px;
+  margin: 9px;
+  color: white;
+  width: 40px;
+  background-color: red;
+  transition: width .35s;
+  -webkit-transition: width .35s;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.new-button:hover {
+  width: 130px;
+}
+
+.new-button:hover .new-logout {
+  opacity: .9;
+}
+
+.new-button {
+  text-decoration: none;
+}

@@ -156,6 +156,6 @@
 } else {
     session_destroy();
     echo "<script>alert('Please log in first.')</script>";
-    header("Refresh: 3; url='../login/student-login.php'");
+    header("Refresh: 3; url='../login/login.php'");
 }
 ?>
