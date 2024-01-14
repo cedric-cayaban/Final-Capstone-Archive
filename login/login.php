@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css files/login3.css">
+    <link rel="stylesheet" href="../css files/login2.css">
     <title>Student Login</title>
 </head>
 
 <body>
     <div class="wrapper">
         <div class="header">
-            <img class="logo" src="../images/psuLogo.svg" alt="PSU Logo">
-            <label class="text-header"><b>PANGASINAN</b> <span class="text-header2">STATE UNIVERSITY</span></label>
+            <img class="logo" src="../images/finalnlogo.svg" alt="PSU Logo">
+           <!--<label class="text-header"><b>CAPSTONE ARCHIVE</b> <span class="text-header2"></span></label>-->
         </div>
 
         <div class="title">

@@ -1,6 +1,16 @@
 <?php
 include "../config.php";
 session_start();
+$userID = $_SESSION['adminID'];
+        $sql = "SELECT * FROM admin WHERE adminID = '$userID'";
+        $result = mysqli_query($connect, $sql);
+        if ($result) {
+            // Fetch data
+            while ($row = $result->fetch_assoc()) {
+                // Access data using $row['column1'], $row['column2'], etc.
+                $username = $row['firstName'];
+            }} 
+
 if (isset($_SESSION['adminID']) && isset($_SESSION['adminPassword'])) { ?>
 
     <!DOCTYPE html>
@@ -16,7 +26,47 @@ if (isset($_SESSION['adminID']) && isset($_SESSION['adminPassword'])) { ?>
     </head>
 
     <body>
-        <?php include "../headers/admin_header_home.php"; ?>
+        <?php
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header("Refresh: 1; url='../login/login.php'");
+    echo "<script>alert('Logged out successfully.')</script>";
+}
+?>
+        <header class="d-flex justify-content-between align-items-center">
+        <div class="top-section">
+            <img class="logo" src="../images/finalnlogo.svg" alt="PSU Logo" style="max-width: 300px; margin-right: 10px;">
+            <!-- <label><b>PANGASINAN STATE UNIVERSITY</b></label> -->
+        </div>
+       
+        <form action="admin_home.php" method="post" class="system-name">
+            <label for="" id="sys-name">Welcome Admin! <?php echo $username;?></label>
+            <button type="submit" name="logout" id="logout" class="btn">
+                <img src="../images/power.png" style="width: 40px; border-radius: 50px; border: none;" alt="Logout">
+            </button>
+        </form>
+    </header>
+
+    <nav class="navbar navbar-expand navbar-dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mb-2 mb-lg-0" id="left-nav">
+                    <li class="nav-item">
+                        <a href="../admin/admin_home.php" class="nav-link ">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../admin/admin-managers.php" class="nav-link active">Managers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../admin/inventory.php" class="nav-link">Inventory</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../admin/archive.php" class="nav-link">Archive</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
         <?php
         if(isset($_GET['title'])){
             $editProf = $_GET['title'];

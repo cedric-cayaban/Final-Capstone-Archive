@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,12 +24,12 @@ if (isset($_POST['logout'])) {
 
     <header class="d-flex justify-content-between align-items-center">
         <div class="top-section">
-            <img class="logo" src="../images/psuLogo.svg" alt="PSU Logo" style="max-width: 100px; margin-right: 10px;">
-            <label><b>PANGASINAN STATE UNIVERSITY</b></label>
+            <img class="logo" src="../images/finalnlogo.svg" alt="PSU Logo" style="max-width: 300px; margin-right: 10px;">
+            <!-- <label><b>PANGASINAN STATE UNIVERSITY</b></label> -->
         </div>
        
         <form action="#" method="post" class="system-name">
-            <label for="" id="sys-name">IT CAPSTONE PROJECT INVENTORY</label>
+            <label for="" id="sys-name">Document Preview</label>
             <button type="submit" name="logout" id="logout" class="btn">
                 <img src="../images/power.png" style="width: 40px; border-radius: 50px; border: none;" alt="Logout">
             </button>
@@ -39,7 +41,7 @@ if (isset($_POST['logout'])) {
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mb-2 mb-lg-0" id="left-nav">
                     <li class="nav-item">
-                        <label for="" class="nav-link active">Document Preview</label>
+                        <!-- <label for="" class="nav-link active">Document Preview</label> -->
                     </li>
                 </ul>
             </div>

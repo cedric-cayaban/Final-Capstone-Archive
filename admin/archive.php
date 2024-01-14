@@ -1,6 +1,16 @@
 <?php
 include "../config.php";
 session_start();
+
+$userID = $_SESSION['adminID'];
+        $sql = "SELECT * FROM admin WHERE adminID = '$userID'";
+        $result = mysqli_query($connect, $sql);
+        if ($result) {
+            // Fetch data
+            while ($row = $result->fetch_assoc()) {
+                // Access data using $row['column1'], $row['column2'], etc.
+                $username = $row['firstName'];
+            }} 
 if (isset($_SESSION['adminID']) && isset($_SESSION['adminPassword'])) { ?>
 
     <!DOCTYPE html>
@@ -42,12 +52,12 @@ if (isset($_POST['logout'])) {
     <body>
     <header class="d-flex justify-content-between align-items-center">
         <div class="top-section">
-            <img class="logo" src="../images/psuLogo.svg" alt="PSU Logo" style="max-width: 100px; margin-right: 10px;">
-            <label><b>PANGASINAN STATE UNIVERSITY</b></label>
+            <img class="logo" src="../images/finalnlogo.svg" alt="PSU Logo" style="max-width: 300px; margin-right: 10px;">
+            <!-- <label><b>PANGASINAN STATE UNIVERSITY</b></label> -->
         </div>
        
         <form action="archive.php" method="post" class="system-name">
-            <label for="" id="sys-name">IT CAPSTONE PROJECT INVENTORY</label>
+            <label for="" id="sys-name">Welcome Admin! <?php echo $username;?></label>
             <button type="submit" name="logout" id="logout" class="btn">
                 <img src="../images/power.png" style="width: 40px; border-radius: 50px; border: none;" alt="Logout">
             </button>

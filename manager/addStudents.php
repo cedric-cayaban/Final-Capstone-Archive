@@ -186,6 +186,6 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
 } else {
     session_destroy();
     echo "<script>alert('Please log in first.')</script>";
-    header("Refresh: 3; url='../login/manager-login.php'");
+    header("Refresh: 3; url='../login/login.php'");
 }
 ?>

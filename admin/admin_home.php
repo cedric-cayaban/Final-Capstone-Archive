@@ -97,6 +97,6 @@ if (isset($_SESSION['adminID']) && isset($_SESSION['adminPassword'])) { ?>
 } else {
     session_destroy();
     echo "<script>alert('Please log in first.')</script>";
-    header("Refresh: 1; url='../login/admin-login.php'");
+    header("Refresh: 1; url='../login/login.php'");
 }
 ?>
