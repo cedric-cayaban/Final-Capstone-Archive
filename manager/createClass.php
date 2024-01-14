@@ -7,14 +7,14 @@ if (isset($_POST['createbtn'])) {
     $semester = $_POST['semester'];
     $startYear = $_POST['startYear'];
     $endYear = $_POST['endYear'];
-    if($startYear == $endYear){
+    if ($startYear == $endYear) {
         $year = $startYear;
     } else {
         $year = $startYear . '-' . $endYear;
     }
     $professorID = $_SESSION['professorID'];
     $blockID = "";
-    if($className == ""){
+    if ($className == "") {
         echo '<script>alert("Please enter a class name.")</script>';
     } else {
         $select = "SELECT * FROM block WHERE blockName = '$className' AND semester = '$semester' AND year = '$year'";
@@ -28,7 +28,7 @@ if (isset($_POST['createbtn'])) {
 
             $select = "SELECT * FROM block WHERE blockName = '$className' AND semester = '$semester' AND year = '$year'";
             $res = mysqli_query($connect, $select);
-            while ($row = mysqli_fetch_array($res)){
+            while ($row = mysqli_fetch_array($res)) {
                 $_SESSION['IDblock'] = $row['blockID'];
             }
             echo '<script>alert("Block has been created successfully!")</script>';
@@ -94,7 +94,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
                             $today = new DateTime("now", new DateTimeZone('Asia/Manila'));
                             $dateTime = $today->format('Y');
                             $selectedYear = isset($_GET['start']) ? $_GET['start'] : 'start';
-                            for ($year = $dateTime; $year >= 2000; $year--) {
+                            for ($year = $dateTime + 1; $year >= 2000; $year--) {
                                 $selected = ($year == $selectedYear) ? 'selected' : '';
                                 echo "<option value=\"$year\" $selected>$year</option>";
                             }
@@ -106,7 +106,7 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
             <button type="submit" name="createbtn" id="createbtn">Create</button>
         </form>
     </body>
-   
+
     </html>
 <?php
 } else {
