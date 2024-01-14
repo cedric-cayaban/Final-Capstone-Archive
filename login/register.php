@@ -38,7 +38,7 @@
             <label for="">Confirm Password</label>
             <input type="password" name="confirmPassword" id="confirmPassword" required>
 
-            <label for="">Program</label>
+            <label for="">Course</label>
             <select name="program" id=""> <!-- program -->
                 <option value="Bachelor of Science in Information Technology">Bachelor of Science in Information Technology</option>
             </select>
