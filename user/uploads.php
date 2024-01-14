@@ -95,7 +95,7 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
                     </div>
 
                     <div class="col" id="multiple">
-                        <label for="" id="program-label"><b>Program</b></label>
+                        <label for="" id="program-label"><b>Major</b></label>
                         <select name="program" id="program">
                             <?php
                             include('../config.php');

@@ -76,10 +76,10 @@ if (isset($_POST['logout'])) {
                         <a href="../admin/admin-managers.php" class="nav-link">Managers</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../admin/inventory.php" class="nav-link">Inventory</a>
+                        <a href="../admin/inventory.php" class="nav-link active">Inventory</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../admin/archive.php" class="nav-link active">Archive</a>
+                        <a href="../admin/archive.php" class="nav-link ">Archive</a>
                     </li>
                 </ul>
             </div>
@@ -94,7 +94,7 @@ if (isset($_POST['logout'])) {
                     </div>
                     <div class="col" id="date">
                         <label for=""><b>Date Created</b></label>
-                        <input type="date" name="dateCreated" id="cDate" required>
+                        <input type="month" name="dateCreated" id="cDate" required>
                     </div>
                 </div>
 
@@ -105,7 +105,7 @@ if (isset($_POST['logout'])) {
                     </div>
 
                     <div class="col" id="multiple">
-                        <label for="" id="program-label"><b>Program</b></label>
+                        <label for="" id="program-label"><b>Major</b></label>
                         <select name="program" id="program">
                             <?php
                             include('../config.php');
@@ -172,7 +172,7 @@ if (isset($_POST['submitFile'])) {
     }
 
     if ($upload) {
-        $sql = 'INSERT INTO `uploaded_capstones`(`capstoneTitle`, `capstoneAbstract`, `dateCreated`, `fileContent`, `dateFileUploaded`, `majorID`, `status`) VALUES ("' . $title . '","' . $abstract . '","' . $dateCreated . '","' . $fileName . '","' . $dateTime . '","' . $program . '","approved")';
+        $sql = 'INSERT INTO `uploaded_capstones`(`capstoneTitle`, `capstoneAbstract`, `dateCreated`, `fileContent`, `dateFileUploaded`, `majorID`, `status`, userID) VALUES ("' . $title . '","' . $abstract . '","' . $dateCreated . '","' . $fileName . '","' . $dateTime . '","' . $program . '","approved", "'.$userID.'")';
         $result = mysqli_query($connect, $sql);
 
       
