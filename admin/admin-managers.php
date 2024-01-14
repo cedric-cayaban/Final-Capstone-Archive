@@ -21,8 +21,9 @@ if (isset($_SESSION['adminID']) && isset($_SESSION['adminPassword'])) { ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css files/admin-header4.css">
+    <link rel="stylesheet" href="../css files/admin-header5.css">
     <link rel="stylesheet" href="../css files/admin-manager.css">
+    <link rel="stylesheet" href="../css files/logout.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Document</title>
 </head>
@@ -60,9 +61,17 @@ if (isset($_POST['logout'])) {
        
         <form action="#" method="post" class="system-name">
             <label for="" id="sys-name">Welcome, Admin <?php echo $username;?>! </label>
-            <button type="submit" name="logout" id="logout" class="btn">
+            <button type="submit"  name="logout" id="logout" class="new-button" >
+                            <img style= "width: 25px;
+                        border-radius: 0px;
+                        float: left;"src="../images/logout_icon.png"alt="Logout">
+                        
+                    <div class="new-logout">LOGOUT</div>
+
+                </button >
+            <!-- <button type="submit" name="logout" id="logout" class="btn">
                 <img src="../images/power.png" style="width: 40px; border-radius: 50px; border: none;" alt="Logout">
-            </button>
+            </button> -->
         </form>
     </header>
 
