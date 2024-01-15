@@ -15,7 +15,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css files/admin-header4.css">
+    <link rel="stylesheet" href="../css files/admin-header5.css">
+    <link rel="stylesheet" href="../css files/logout.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">  
     <title>Document</title>
 </head>
@@ -37,9 +38,14 @@ if (isset($_POST['logout'])) {
        
         <form action="#" method="post" class="system-name">
             <label for="" id="sys-name">Welcome, Professor <?php echo $username;?>!</label>
-            <button type="submit" name="logout" id="logout" class="btn">
-                <img src="../images/power.png" style="width: 40px; border-radius: 50px; border: none;" alt="Logout">
-            </button>
+            <button type="submit"  name="logout" id="logout" class="new-button" >
+                            <img style= "width: 25px;
+                        border-radius: 0px;
+                        float: left;"src="../images/logout_icon.png"alt="Logout">
+                        
+                    <div class="new-logout">LOGOUT</div>
+
+                </button >
         </form>
     </header>
 

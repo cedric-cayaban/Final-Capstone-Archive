@@ -19,8 +19,9 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Project</title>
-        <link rel="stylesheet" href="../css files/uploads2.css">
-        <link rel="stylesheet" href="../css files/homepage6.css">
+        <link rel="stylesheet" href="../css files/uploads3.css">
+        <link rel="stylesheet" href="../css files/homepage9.css">
+        <link rel="stylesheet" href="../css files/logout.css">
 
         <script src="https://kit.fontawesome.com/979ee355d9.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -43,9 +44,14 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
 
             <form action="#" method="post" class="system-name">
                 <label for="" id="sys-name">Welcome, <?php echo $username;?>!</label>
-                <button type="submit" name="logout" id="logout" class="btn">
-                    <img src="../images/power.png" style="width: 40px; border-radius: 50px; border: none;" alt="Logout">
-                </button>
+                <button type="submit"  name="logout" id="logout" class="new-button" >
+                            <img style= "width: 25px;
+                        border-radius: 0px;
+                        float: left;"src="../images/logout_icon.png"alt="Logout">
+                        
+                    <div class="new-logout">LOGOUT</div>
+
+                </button >
             </form>
         </header>
 
