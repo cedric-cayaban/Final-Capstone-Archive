@@ -37,7 +37,7 @@ if (isset($_POST['logout'])) {
         </div>
        
         <form action="#" method="post" class="system-name">
-            <label for="" id="sys-name">Welcome, Professor<?php echo $username;?>!</label>
+            <label for="" id="sys-name">Welcome, Professor <?php echo $username;?>!</label>
             <button type="submit"  name="logout" id="logout" class="new-button" >
                             <img style= "width: 25px;
                         border-radius: 0px;

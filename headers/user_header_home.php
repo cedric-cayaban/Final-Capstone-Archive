@@ -37,7 +37,7 @@
         </div>
        
         <form action="#" method="post" class="system-name">
-            <label for="" id="sys-name">Welcome,<?php echo $username;?>!</label>
+            <label for="" id="sys-name">Welcome, <?php echo $username;?>!</label>
              <link rel="stylesheet" href="../css files/homepages9.css">
             <!-- <button type="submit" name="logout" id="logout" class="btn">
                 <img src="../images/power.png" style="width: 40px; border-radius: 50px; border: none;" alt="Logout">

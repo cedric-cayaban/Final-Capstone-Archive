@@ -43,7 +43,7 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
             </div>
 
             <form action="#" method="post" class="system-name">
-                <label for="" id="sys-name">Welcome,<?php echo $username;?>!</label>
+                <label for="" id="sys-name">Welcome, <?php echo $username;?>!</label>
                 <button type="submit"  name="logout" id="logout" class="new-button" >
                             <img style= "width: 25px;
                         border-radius: 0px;
