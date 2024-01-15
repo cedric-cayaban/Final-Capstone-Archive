@@ -46,7 +46,6 @@ if (isset($_SESSION['professorID']) && isset($_SESSION['profPassword'])) { ?>
 
         #logout {
             border: none;
-            background-color: white;
             margin-top: 2%;
         }
 
