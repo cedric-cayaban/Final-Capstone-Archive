@@ -9,7 +9,8 @@ if ($result) {
     while ($row = $result->fetch_assoc()) {
         // Access data using $row['column1'], $row['column2'], etc.
         $username = $row['firstName'];
-    }} 
+    }
+}
 if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
 
     <!DOCTYPE html>
@@ -43,15 +44,15 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
             </div>
             
             <form action="#" method="post" class="system-name">
-                <label for="" id="sys-name">Welcome, <?php echo $username;?>!</label>
-                <button type="submit"  name="logout" id="logout" class="new-button" >
-                            <img style= "width: 25px;
+                <label for="" id="sys-name">Welcome, <?php echo $username; ?>!</label>
+                <button type="submit" name="logout" id="logout" class="new-button">
+                    <img style="width: 25px;
                         border-radius: 0px;
-                        float: left;"src="../images/logout_icon.png"alt="Logout">
-                        
+                        float: left;" src="../images/logout_icon.png" alt="Logout">
+
                     <div class="new-logout">LOGOUT</div>
 
-                </button >
+                </button>
             </form>
         </header>
 
@@ -71,6 +72,11 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
                     </ul>
 
                     <ul class="navbar-nav" id="right-nav">
+                        <li class="nav-item">
+                            <a href="viewClass.php" class="nav-link">
+                                &nbsp;&nbsp;My Class
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="uploads.php" class="nav-link active">
                                 <i class="fas fa-user fa"></i>&nbsp;&nbsp;Project
@@ -256,10 +262,10 @@ if (isset($_POST['submitFile'])) {
     }
 
     if ($upload) {
-        $sql = 'INSERT INTO `uploaded_capstones`(`capstoneTitle`, `capstoneAbstract`, `dateCreated`, `fileContent`, `dateFileUploaded`, `majorID`, `status`, userID) VALUES ("' . $title . '","' . $abstract . '","' . $dateCreated . '","' . $fileName . '","' . $dateTime . '","' . $program . '","pending", "'.$userID.'")';
+        $sql = 'INSERT INTO `uploaded_capstones`(`capstoneTitle`, `capstoneAbstract`, `dateCreated`, `fileContent`, `dateFileUploaded`, `majorID`, `status`, userID) VALUES ("' . $title . '","' . $abstract . '","' . $dateCreated . '","' . $fileName . '","' . $dateTime . '","' . $program . '","pending", "' . $userID . '")';
         $result = mysqli_query($connect, $sql);
 
-        $sql = "UPDATE groups SET status = 'finished' WHERE leaderID = '".$_SESSION['userID']."'";
+        $sql = "UPDATE groups SET status = 'finished' WHERE leaderID = '" . $_SESSION['userID'] . "'";
         $result = mysqli_query($connect, $sql);
 
         echo '<script>alert("Capstone has been uploaded successfully!")</script>';
