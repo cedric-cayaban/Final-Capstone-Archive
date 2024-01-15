@@ -63,7 +63,7 @@ require __DIR__.'/vendor/autoload.php';
 
 use Orhanerday\OpenAi\OpenAi;
 
-$open_ai_key = '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';
+$open_ai_key = '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';
 
 $open_ai = new OpenAi($open_ai_key);
 
@@ -184,7 +184,7 @@ $response2 = $response2["choices"][0]["text"];
         </nav>
 
  
-        <div style="display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+        <div style="display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; margin-right: -10%;">
             <div class="single-chart" >
                 <svg viewBox="0 0 45 45" class="circular-chart blue">
                 <path class="circle-bg"
@@ -200,7 +200,7 @@ $response2 = $response2["choices"][0]["text"];
                 />
                 <text x="18" y="20.35" class="percentage"><?php echo "$response"."%"; ?></text>
                 </svg>
-                <div style="text-align:center;   margin-right: 8%; font-size: 1.1rem;"> <!-- font size not yet specified -->
+                <div style="text-align:center;   margin-right: 0%; font-size: 1.1rem;"> <!-- font size not yet specified -->
                     <label for="" ><h3>Uniqueness</h3></label> 
                 </div>
             </div>
