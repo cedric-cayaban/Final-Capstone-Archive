@@ -194,7 +194,7 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
 
                 <div class="row">
                     <div class="col">
-                        <label for="" id="cap-status"><b>Status: </b>No submission</label>
+                        <label for="" id="cap-status"><b>Status: </b>No Capstone Submitted</label>
                                         
                     </div>
                 </div>
@@ -303,7 +303,7 @@ if (isset($_POST['updateFile'])) {
     }
 
     if ($upload) {
-        $capstoneID=$row['capstoneID'];
+        $capstoneID = $row['capstoneID'];
         $sql = 'UPDATE `uploaded_capstones` SET 
         `capstoneTitle` = "' . $title . '",
         `capstoneAbstract` = "' . $abstract . '",

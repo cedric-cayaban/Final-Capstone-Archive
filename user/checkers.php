@@ -75,19 +75,12 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) {
                                 &nbsp;&nbsp;My Class
                             </a>
                         </li>
-                        <?php
-                        include "../config.php";
-                        $userID = $_SESSION['userID'];
-                        $sql = "SELECT * FROM groups WHERE leaderID = '$userID'";
-                        $result = mysqli_query($connect, $sql);
-                        if ($row = mysqli_num_rows($result) > 0) { ?>
-                            <li class="nav-item">
-                                <a href="uploads.php" class="nav-link">
-                                    <i class="fas fa-user fa"></i>&nbsp;&nbsp;Project
-                                </a>
-                            </li>
+                        <li class="nav-item">
+                            <a href="uploads.php" class="nav-link">
+                                <i class="fas fa-user fa"></i>&nbsp;&nbsp;Project
+                            </a>
+                        </li>
                     </ul>
-                <?php } ?>
                 </div>
             </div>
         </nav>
