@@ -11,6 +11,10 @@ if ($result) {
         $username = $row['firstName'];
     }
 }
+
+if(isset($_POST['viewGroupsbtn'])){
+    header("Refresh: 0; url='groupInfo.php'");
+}
 if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
 
     <!DOCTYPE html>
@@ -23,7 +27,8 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
         <link rel="stylesheet" href="../css files/uploads3.css">
         <link rel="stylesheet" href="../css files/homepage9.css">
         <link rel="stylesheet" href="../css files/logout.css">
-
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css files/add-students3.css">
         <script src="https://kit.fontawesome.com/979ee355d9.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     </head>
@@ -87,7 +92,58 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
             </div>
         </nav>
 
-        
+        <div class="container-fluid" id="contents">
+            <form action="" method="post">
+
+                <?php
+                $sql = "SELECT * FROM `block` JOIN students ON block.blockID = students.blockID WHERE students.studentID = '$userID';";
+                $result = mysqli_query($connect, $sql);
+                while ($row = mysqli_fetch_array($result)) { ?>
+                    <div class="row">
+
+                        <div class="row">
+                            <div class="col-md" id="block-sec">
+                                <label for="" id="blocks"><b>BSIT <?php echo $row['blockName']; ?></b></label>
+                            </div>
+                            <div class="col-md" id="sem-sec">
+                                <label for="" id="sem"><b><?php echo $row['semester']; ?></b></label>
+                                <label for="" id="year"> <b>A.Y. <?php echo $row['year']; ?></b></label>
+                            </div>
+                        </div>
+            </form>
+        <?php } ?>
+
+        <form action="" method="post" class="lowest-part">
+            <button type="submit" class="btn btn-primary" id="delete" name="viewGroupsbtn" style="color: white;">My Group</button>
+        </form>
+
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <th scope="col">ID Number</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Middle Name</th>
+            </thead>
+            <tbody>
+                <?php
+                $sql = "SELECT * FROM `block` JOIN students ON block.blockID = students.blockID WHERE students.studentID = '$userID';";
+                $result = mysqli_query($connect, $sql);
+                while ($row = mysqli_fetch_array($result)) { ?>
+                    <?php
+                    $query = "SELECT * FROM students WHERE blockID = '".$row['blockID']."'";
+                    $result = mysqli_query($connect, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+                    ?>
+                        <tr>
+                            <td><?php echo $row['studentID']; ?></td>
+                            <td><?php echo $row['lastName']; ?></td>
+                            <td><?php echo $row['firstName']; ?></td>
+                            <td><?php echo $row['middleName']; ?></td>
+                        </tr>
+                    <?php } ?>
+                <?php } ?>
+            </tbody>
+        </table>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
@@ -98,47 +154,6 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
 } else {
     session_destroy();
     echo "Please log in first.";
-    header("Refresh: 3; url='login.php'");
-}
-?>
-
-<?php
-if (isset($_POST['submitFile'])) {
-    $title = $_POST['title'];
-    $abstract = htmlspecialchars($_POST['abstract']);
-    $dateCreated = $_POST['dateCreated'];
-    $program = $_POST['program'];
-
-    $fileName = $_FILES['capstoneFile']['name'];
-    $tmpFileName = $_FILES['capstoneFile']['tmp_name'];
-    $targetdir = '../capstones/';
-
-    $today = new DateTime("now", new DateTimeZone('Asia/Manila'));
-    $dateTime = $today->format('Y-m-d');
-    $upload = false;
-
-    if (!file_exists($targetdir)) {
-        mkdir('../capstones/');
-    }
-
-    $directory = $targetdir . $fileName;
-    $fileExt = strtolower(pathinfo($directory, PATHINFO_EXTENSION));
-
-    if ($fileExt == 'pdf') {
-        move_uploaded_file($tmpFileName, $targetdir . $fileName);
-        $upload = true;
-    } else {
-        echo '<script>alert("File type unsupported.")</script>';
-    }
-
-    if ($upload) {
-        $sql = 'INSERT INTO `uploaded_capstones`(`capstoneTitle`, `capstoneAbstract`, `dateCreated`, `fileContent`, `dateFileUploaded`, `majorID`, `status`, userID) VALUES ("' . $title . '","' . $abstract . '","' . $dateCreated . '","' . $fileName . '","' . $dateTime . '","' . $program . '","pending", "' . $userID . '")';
-        $result = mysqli_query($connect, $sql);
-
-        $sql = "UPDATE groups SET status = 'finished' WHERE leaderID = '" . $_SESSION['userID'] . "'";
-        $result = mysqli_query($connect, $sql);
-
-        echo '<script>alert("Capstone has been uploaded successfully!")</script>';
-    }
+    header("Refresh: 3; url='../login/login.php'");
 }
 ?>
