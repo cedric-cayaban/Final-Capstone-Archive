@@ -29,7 +29,62 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
     </head>
 
     <body>
+        <?php
+        if (isset($_POST['updateFile'])) {
+            $title = $_POST['title'];
+            $abstract = htmlspecialchars($_POST['abstract']);
+            $dateCreated = $_POST['dateCreated'];
+            $program = $_POST['program'];
 
+            $fileName = $_FILES['capstoneFile']['name'];
+            $tmpFileName = $_FILES['capstoneFile']['tmp_name'];
+            $targetdir = '../capstones/';
+
+            $today = new DateTime("now", new DateTimeZone('Asia/Manila'));
+            $dateTime = $today->format('Y-m-d');
+            $upload = false;
+
+            if (!file_exists($targetdir)) {
+                mkdir('../capstones/');
+            }
+
+            $directory = $targetdir . $fileName;
+            $fileExt = strtolower(pathinfo($directory, PATHINFO_EXTENSION));
+
+            if ($fileExt == 'pdf') {
+                move_uploaded_file($tmpFileName, $targetdir . $fileName);
+                $upload = true;
+            } else {
+                echo '<script>alert("File type unsupported.")</script>';
+            }
+
+            if ($upload) {
+                $sql = "SELECT * FROM `uploaded_capstones` WHERE userID = '$userID'";
+                $res = mysqli_query($connect, $sql);
+                while ($row = mysqli_fetch_array($res)) {
+
+                    $capstoneID = $row['capstoneID'];
+                    $sql = 'UPDATE `uploaded_capstones` SET 
+                    `capstoneTitle` = "' . $title . '",
+                    `capstoneAbstract` = "' . $abstract . '",
+                    `dateCreated` = "' . $dateCreated . '",
+                    `fileContent` = "' . $fileName . '",
+                    `dateFileUploaded` = "' . $dateTime . '",
+                    `majorID` = "' . $program . '",
+                    `status` = "pending",
+                    `userID` = "' . $userID . '"
+                    WHERE `capstoneID` = ' . $capstoneID;
+                    $result = mysqli_query($connect, $sql);
+
+                    $sql = "UPDATE groups SET status = 'finished' WHERE leaderID = '" . $_SESSION['userID'] . "'";
+                    $result = mysqli_query($connect, $sql);
+
+                    echo '<script>alert("Capstone has been updated successfully!")</script>';
+                    header("Refresh: 0; url='uploads.php'");
+                }
+            }
+        }
+        ?>
         <?php
         if (isset($_POST['logout'])) {
             session_destroy();
@@ -42,7 +97,7 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
                 <img class="logo" src="../images/finalnlogo.svg" alt="PSU Logo" style="max-width: 300px; margin-right: 10px;">
                 <!-- <label><b>PANGASINAN STATE UNIVERSITY</b></label> -->
             </div>
-            
+
             <form action="#" method="post" class="system-name">
                 <label for="" id="sys-name">Welcome, <?php echo $username; ?>!</label>
                 <button type="submit" name="logout" id="logout" class="new-button">
@@ -87,137 +142,139 @@ if (isset($_SESSION['userID']) && isset($_SESSION['password'])) { ?>
             </div>
         </nav>
         <?php
-            $sql = "SELECT * FROM `uploaded_capstones` WHERE userID = '$userID'";
-            $result = $connect->query($sql);
-            
-            // Check if any rows are returned
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();?>
+        $sql = "SELECT * FROM `uploaded_capstones` WHERE userID = '$userID'";
+        $result = $connect->query($sql);
 
-                <div class="container-fluid" id="cont">
-                            <form action="uploads.php" method="post" enctype="multipart/form-data">
-                                <div class="row">
-                                    <div class="col" id="title">
-                                        <label for=""><b>Title</b>:</label>
-                                        <input type="text" name="title" value= "<?php echo $row['capstoneTitle'];?>" id="cTitle" required>
-                                    </div>
-                                    <div class="col" id="date">
-                                        <label for=""><b>Date Created</b></label>
-                                        <input type="month" name="dateCreated" value= "<?php echo $row['dateCreated'];?>" id="cDate" required>
-                                    </div>
-                                </div>
-                
-                                <div class="row">
-                                    <div class="col" id="abstract">
-                                        <label><b>Abstract:</b></label>
-                                        <textarea name="abstract" id="cAbstract" cols="30" rows="7" required><?php echo $row['capstoneAbstract']; ?></textarea>
-                                    </div>
-                
-                                    <div class="col" id="multiple">
-                                        <label for="" id="program-label"><b>Major</b></label>
-                                        <select name="program" id="program">
-                                            <?php
-                                            include('../config.php');
-                                            $program = mysqli_query($connect, "SELECT * FROM major");
-                                            while ($result = mysqli_fetch_array($program)) {
-                                            ?>
-                                                <option value="<?php echo $result['majorID'] ?>"><?php echo $result['majorName'] ?></option>
-                                            <?php } ?>
-                                        </select>
-                
-                                        <label for="capstoneFile" name="fileContent" id="upload"   ><b>Upload file</b></label>
-                                        <input type="file" name="capstoneFile" id="capstoneFile">
-                                    </div>
-                                </div>
+        // Check if any rows are returned
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc(); ?>
 
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="" id="cap-status"><b>Status:</b> <?php echo $row['status']?></label>
-                                        
-                                    </div>
-                                </div>
-                
-                                                <?php
-                                                  $sql = "SELECT * FROM groups WHERE leaderID = '$userID'";
-                                                  $result = mysqli_query($connect, $sql);
-                                                  if ($row = mysqli_num_rows($result) > 0) { ?>
-                                                         <input type="submit" name="updateFile" id="submitFile" value="Update">
-                                                          <?php } ?>
-                                            
-                                
-
-
-                                
-                
-                            </form>
-                
+            <div class="container-fluid" id="cont">
+                <form action="uploads.php" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col" id="title">
+                            <label for=""><b>Title</b>:</label>
+                            <input type="text" name="title" value="<?php echo $row['capstoneTitle']; ?>" id="cTitle" required>
                         </div>
-                             <?php
-                            }
-                            else {?>
-
-<div class="container-fluid" id="cont">
-            <form action="uploads.php" method="post" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col" id="title">
-                        <label for=""><b>Title</b>:</label>
-                        <input type="text" name="title" id="cTitle" required>
-                    </div>
-                    <div class="col" id="date">
-                        <label for=""><b>Date Created</b></label>
-                        <input type="month" name="dateCreated" id="cDate" required>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col" id="abstract">
-                        <label for=""><b>Abstract:</b></label>
-                        <textarea name="abstract" name="abstract" id="cAbstract" cols="30" rows="7" required></textarea>
+                        <div class="col" id="date">
+                            <label for=""><b>Date Created</b></label>
+                            <input type="month" name="dateCreated" value="<?php echo $row['dateCreated']; ?>" id="cDate" required>
+                        </div>
                     </div>
 
-                    <div class="col" id="multiple">
-                        <label for="" id="program-label"><b>Major</b></label>
-                        <select name="program" id="program">
-                            <?php
-                            include('../config.php');
-                            $program = mysqli_query($connect, "SELECT * FROM major");
-                            while ($result = mysqli_fetch_array($program)) {
-                            ?>
-                                <option value="<?php echo $result['majorID'] ?>"><?php echo $result['majorName'] ?></option>
-                            <?php } ?>
-                        </select>
+                    <div class="row">
+                        <div class="col" id="abstract">
+                            <label><b>Abstract:</b></label>
+                            <textarea name="abstract" id="cAbstract" cols="30" rows="7" required><?php echo $row['capstoneAbstract']; ?></textarea>
+                        </div>
 
-                        <label for="capstoneFile" name="fileContent" id="upload"><b>Upload file</b></label>
-                        <input type="file" name="capstoneFile" id="capstoneFile" required>
+                        <div class="col" id="multiple">
+                            <label for="" id="program-label"><b>Major</b></label>
+
+                            <select name="program" id="program">
+                                <?php
+                                include('../config.php');
+                                $program = mysqli_query($connect, "SELECT * FROM major");
+                                while ($result = mysqli_fetch_array($program)) {
+                                ?>
+                                    <option value="<?php echo $result['majorID'] ?>" <?php
+                                                                                        if ($result['majorID'] == $row['majorID']) echo 'selected';
+                                                                                        ?>><?php echo $result['majorName'] ?></option>
+                                <?php } ?>
+                            </select>
+
+                            <label for="capstoneFile" name="fileContent" id="upload"><b>Upload file</b></label>
+                            <input type="file" name="capstoneFile" id="capstoneFile">
+                        </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col">
-                        <label for="" id="cap-status"><b>Status: </b>No submission</label>
-                                        
+                    <div class="row">
+                        <div class="col">
+                            <label for="" id="cap-status"><b>Status:</b> <?php echo $row['status'] ?></label>
+
+                        </div>
                     </div>
-                </div>
 
-                
-
-                <?php
-                 $sql = "SELECT * FROM groups WHERE leaderID = '$userID'";
-                $result = mysqli_query($connect, $sql);
-                if ($row = mysqli_num_rows($result) > 0) { ?>
-                <input type="submit" name="submitFile" id="submitFile" value="Submit">
-                                                          <?php } ?>
-            </form>
-
-        </div>
-             <?php
-            }
-             ?>   
-            
-            
+                    <?php
+                    $sql = "SELECT * FROM groups WHERE leaderID = '$userID'";
+                    $result = mysqli_query($connect, $sql);
+                    if ($row = mysqli_num_rows($result) > 0) { ?>
+                        <input type="submit" name="updateFile" id="submitFile" value="Update">
+                    <?php } ?>
 
 
-        
+
+
+
+
+                </form>
+
+            </div>
+        <?php
+        } else { ?>
+
+            <div class="container-fluid" id="cont">
+                <form action="uploads.php" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col" id="title">
+                            <label for=""><b>Title</b>:</label>
+                            <input type="text" name="title" id="cTitle" required>
+                        </div>
+                        <div class="col" id="date">
+                            <label for=""><b>Date Created</b></label>
+                            <input type="month" name="dateCreated" id="cDate" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col" id="abstract">
+                            <label for=""><b>Abstract:</b></label>
+                            <textarea name="abstract" name="abstract" id="cAbstract" cols="30" rows="7" required></textarea>
+                        </div>
+
+                        <div class="col" id="multiple">
+                            <label for="" id="program-label"><b>Major</b></label>
+                            <select name="program" id="program">
+                                <?php
+                                include('../config.php');
+                                $program = mysqli_query($connect, "SELECT * FROM major");
+                                while ($result = mysqli_fetch_array($program)) {
+                                ?>
+                                    <option value="<?php echo $result['majorID'] ?>"><?php echo $result['majorName'] ?></option>
+                                <?php } ?>
+                            </select>
+
+                            <label for="capstoneFile" name="fileContent" id="upload"><b>Upload file</b></label>
+                            <input type="file" name="capstoneFile" id="capstoneFile" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="" id="cap-status"><b>Status: </b>No submission</label>
+
+                        </div>
+                    </div>
+
+
+
+                    <?php
+                    $sql = "SELECT * FROM groups WHERE leaderID = '$userID'";
+                    $result = mysqli_query($connect, $sql);
+                    if ($row = mysqli_num_rows($result) > 0) { ?>
+                        <input type="submit" name="submitFile" id="submitFile" value="Submit">
+                    <?php } ?>
+                </form>
+
+            </div>
+        <?php
+        }
+        ?>
+
+
+
+
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
@@ -269,57 +326,6 @@ if (isset($_POST['submitFile'])) {
         $result = mysqli_query($connect, $sql);
 
         echo '<script>alert("Capstone has been uploaded successfully!")</script>';
-    }
-}
-?>
-
-<?php
-if (isset($_POST['updateFile'])) {
-    $title = $_POST['title'];
-    $abstract = htmlspecialchars($_POST['abstract']);
-    $dateCreated = $_POST['dateCreated'];
-    $program = $_POST['program'];
-
-    $fileName = $_FILES['capstoneFile']['name'];
-    $tmpFileName = $_FILES['capstoneFile']['tmp_name'];
-    $targetdir = '../capstones/';
-
-    $today = new DateTime("now", new DateTimeZone('Asia/Manila'));
-    $dateTime = $today->format('Y-m-d');
-    $upload = false;
-
-    if (!file_exists($targetdir)) {
-        mkdir('../capstones/');
-    }
-
-    $directory = $targetdir . $fileName;
-    $fileExt = strtolower(pathinfo($directory, PATHINFO_EXTENSION));
-
-    if ($fileExt == 'pdf') {
-        move_uploaded_file($tmpFileName, $targetdir . $fileName);
-        $upload = true;
-    } else {
-        echo '<script>alert("File type unsupported.")</script>';
-    }
-
-    if ($upload) {
-        $capstoneID=$row['capstoneID'];
-        $sql = 'UPDATE `uploaded_capstones` SET 
-        `capstoneTitle` = "' . $title . '",
-        `capstoneAbstract` = "' . $abstract . '",
-        `dateCreated` = "' . $dateCreated . '",
-        `fileContent` = "' . $fileName . '",
-        `dateFileUploaded` = "' . $dateTime . '",
-        `majorID` = "' . $program . '",
-        `status` = "pending",
-        `userID` = "' . $userID . '"
-        WHERE `capstoneID` = ' . $capstoneID;
-        $result = mysqli_query($connect, $sql);
-
-        $sql = "UPDATE groups SET status = 'finished' WHERE leaderID = '".$_SESSION['userID']."'";
-        $result = mysqli_query($connect, $sql);
-
-        echo '<script>alert("Capstone has been updated successfully!")</script>';
     }
 }
 ?>
